@@ -27,9 +27,7 @@ export default function ProductDetailPage({ params }: PageProps) {
       try {
         const resolvedParams = await params;
 
-        const response = await fetch(
-          `http://localhost:5136/api/Product/${resolvedParams.id}`
-        );
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Product/${resolvedParams.id}`);
 
         if (!response.ok) {
           throw new Error("Erro ao buscar produto");

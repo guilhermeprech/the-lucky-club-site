@@ -21,7 +21,7 @@ export default function CollectionPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:5136/api/Product");
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Product`);
 
         if (!response.ok) {
           throw new Error("Erro ao buscar produtos");
