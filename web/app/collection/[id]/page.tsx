@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Header from "@/components/Header";
 import { addToCart } from "@/src/lib/cart";
 
 type Product = {
@@ -27,7 +28,9 @@ export default function ProductDetailPage({ params }: PageProps) {
       try {
         const resolvedParams = await params;
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Product/${resolvedParams.id}`);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/Product/${resolvedParams.id}`
+        );
 
         if (!response.ok) {
           throw new Error("Erro ao buscar produto");
@@ -55,7 +58,7 @@ export default function ProductDetailPage({ params }: PageProps) {
       price: product.price,
     });
 
-    alert("Item added to bag");
+    alert("Peça adicionada à sacola");
   };
 
   if (loading) {
@@ -80,27 +83,7 @@ export default function ProductDetailPage({ params }: PageProps) {
 
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-      <header className="border-b border-black/10">
-        <div className="container-editorial flex items-center justify-between py-5 text-[11px] uppercase tracking-[0.28em]">
-          <nav className="hidden items-center gap-6 md:flex">
-            <a href="/">Home</a>
-            <a href="/collection">Collection</a>
-            <a href="/about">About</a>
-          </nav>
-
-          <a href="/" className="text-center tracking-[0.42em]">
-            The Lucky Club
-          </a>
-
-          <nav className="flex items-center gap-6">
-            <a href="#">Search</a>
-            <a href="#" className="hidden md:block">
-              Login
-            </a>
-            <a href="/bag">Bag</a>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       <section className="container-editorial grid gap-10 py-16 md:grid-cols-[1.1fr_0.9fr]">
         <div className="aspect-[4/5] bg-[#e8e3d8]" />
@@ -122,12 +105,12 @@ export default function ProductDetailPage({ params }: PageProps) {
           </p>
 
           <p className="mt-6 text-[12px] uppercase tracking-[0.25em] text-black/45">
-            Condition
+            Condição
           </p>
           <p className="mt-2 text-[15px] text-black/70">{product.condition}</p>
 
           <p className="mt-8 text-[12px] uppercase tracking-[0.25em] text-black/45">
-            Description
+            Descrição
           </p>
           <p className="mt-2 text-[15px] leading-8 text-black/70">
             {product.description}
@@ -138,14 +121,14 @@ export default function ProductDetailPage({ params }: PageProps) {
               onClick={handleAddToBag}
               className="border border-black px-6 py-3 text-[11px] uppercase tracking-[0.28em] transition hover:bg-black hover:text-[#f3f1e9]"
             >
-              Add to bag
+              Adicionar à sacola
             </button>
 
             <a
               href="/collection"
               className="px-2 py-3 text-[11px] uppercase tracking-[0.28em] text-black/55"
             >
-              Back to collection
+              Voltar para a coleção
             </a>
           </div>
         </div>

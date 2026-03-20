@@ -1,23 +1,21 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Header from "@/components/Header";
 import {
   CartItem,
   getCart,
-  getCartCount,
   removeFromCart,
   updateQuantity,
 } from "@/src/lib/cart";
 
 export default function BagPage() {
   const [items, setItems] = useState<CartItem[]>([]);
-  const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
     const refreshCart = () => {
       const cart = getCart();
       setItems(cart);
-      setCartCount(getCartCount());
     };
 
     refreshCart();
@@ -37,7 +35,6 @@ export default function BagPage() {
     removeFromCart(id);
     const updatedCart = getCart();
     setItems(updatedCart);
-    setCartCount(getCartCount());
   };
 
   const handleQuantityChange = (id: number, quantity: number) => {
@@ -46,49 +43,33 @@ export default function BagPage() {
     updateQuantity(id, quantity);
     const updatedCart = getCart();
     setItems(updatedCart);
-    setCartCount(getCartCount());
   };
 
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-      <header className="border-b border-black/10">
-        <div className="container-editorial flex items-center justify-between py-5 text-[11px] uppercase tracking-[0.28em]">
-          <nav className="hidden items-center gap-6 md:flex">
-            <a href="/">Home</a>
-            <a href="/collection">Collection</a>
-            <a href="/about">About</a>
-          </nav>
-
-          <a href="/" className="text-center tracking-[0.42em]">
-            The Lucky Club
-          </a>
-
-          <nav className="flex items-center gap-6">
-            <a href="/collection">Continue shopping</a>
-            <a href="/bag">Bag ({cartCount})</a>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       <div className="container-editorial py-16">
         <div className="mb-10">
           <p className="text-[10px] uppercase tracking-[0.34em] text-black/40">
-            Bag
+            Sacola
           </p>
           <h1 className="mt-4 text-4xl tracking-[-0.05em] md:text-6xl">
-            Your selection
+            Sua seleção
           </h1>
         </div>
 
         {items.length === 0 ? (
           <div>
-            <p className="text-[14px] text-black/60">Your bag is empty.</p>
+            <p className="text-[14px] text-black/60">
+              Sua sacola está vazia.
+            </p>
 
             <a
               href="/collection"
               className="mt-6 inline-block border border-black px-6 py-3 text-[10px] uppercase tracking-[0.32em] transition hover:bg-black hover:text-[#f3f1e9]"
             >
-              Go to collection
+              Ver coleção
             </a>
           </div>
         ) : (
@@ -142,7 +123,7 @@ export default function BagPage() {
                         onClick={() => handleRemove(item.id)}
                         className="ml-4 text-[12px] uppercase tracking-[0.2em] text-black/50"
                       >
-                        Remove
+                        Remover
                       </button>
                     </div>
                   </div>
@@ -152,7 +133,7 @@ export default function BagPage() {
 
             <div className="h-fit border border-black/10 p-8">
               <p className="text-[10px] uppercase tracking-[0.34em] text-black/40">
-                Summary
+                Resumo
               </p>
 
               <div className="mt-6 flex items-center justify-between text-[15px]">
@@ -166,14 +147,14 @@ export default function BagPage() {
               </div>
 
               <button className="mt-8 w-full border border-black px-6 py-4 text-[10px] uppercase tracking-[0.32em] transition hover:bg-black hover:text-[#f3f1e9]">
-                Proceed
+                Finalizar pedido
               </button>
 
               <a
                 href="/collection"
                 className="mt-4 inline-block text-[10px] uppercase tracking-[0.28em] text-black/55"
               >
-                Continue shopping
+                Continuar comprando
               </a>
             </div>
           </div>

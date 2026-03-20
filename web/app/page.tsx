@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import Footer from "@/components/Footer";
-import { getCartCount } from "@/src/lib/cart";
+import Header from "@/components/Header";
 
 type Product = {
   id: number;
@@ -17,12 +18,15 @@ type Product = {
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [cartCount, setCartCount] = useState(0);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Product`);
+        console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
+        
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/Product`
+        );
 
         if (!response.ok) {
           throw new Error("Erro ao buscar produtos");
@@ -40,20 +44,6 @@ export default function Home() {
     fetchProducts();
   }, []);
 
-  useEffect(() => {
-    const updateCartCount = () => {
-      setCartCount(getCartCount());
-    };
-
-    updateCartCount();
-
-    window.addEventListener("focus", updateCartCount);
-
-    return () => {
-      window.removeEventListener("focus", updateCartCount);
-    };
-  }, []);
-
   const featuredProducts = useMemo(() => {
     return [...products]
       .sort(
@@ -65,46 +55,34 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-      <header className="border-b border-black/10">
-        <div className="container-editorial flex items-center justify-between py-5 text-[11px] uppercase tracking-[0.28em]">
-          <nav className="hidden items-center gap-6 md:flex">
-            <a href="/collection">Collection</a>
-            <a href="#new-in">New In</a>
-            <a href="/about">About</a>
-          </nav>
+      <Header />
 
-          <a href="/" className="text-center tracking-[0.42em]">
-            The Lucky Club
-          </a>
-
-          <nav className="flex items-center gap-6">
-            <a href="/collection">Shop</a>
-            <a href="#" className="hidden md:block">
-              Search
-            </a>
-            <a href="/bag">Bag ({cartCount})</a>
-          </nav>
-        </div>
-      </header>
-
-      {/* HERO COM GIF */}
       <section className="border-b border-black/10">
         <div className="container-editorial py-6 md:py-8">
           <a href="/collection" className="mx-auto block max-w-[1050px]">
-            <div className="relative aspect-[16/8] w-full overflow-hidden bg-[#d8d2c8]">
-              
-              {/* GIF */}
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 h-full w-full object-cover"
-              >
-                <source src="/images/hero.mp4" type="video/mp4" />
-              </video>
+            {/* HERO MOBILE */}
+            <div className="relative aspect-[3/5] w-full overflow-hidden bg-[#d8d2c8] md:hidden">
+              <Image
+                src="/images/hero-mobile.jpg"
+                alt="Imagem principal The Lucky Club"
+                fill
+                priority
+                className="object-cover"
+              />
 
-              {/* overlay leve pra dar contraste */}
+              <div className="absolute inset-0 bg-black/10" />
+            </div>
+
+            {/* HERO DESKTOP */}
+            <div className="relative hidden aspect-[16/9] w-full overflow-hidden bg-[#d8d2c8] md:block">
+              <Image
+                src="/images/hero-desktop.jpg"
+                alt="Imagem principal The Lucky Club"
+                fill
+                priority
+                className="object-cover"
+              />
+
               <div className="absolute inset-0 bg-black/10" />
             </div>
           </a>
@@ -116,10 +94,10 @@ export default function Home() {
           <div className="mb-10 flex items-end justify-between gap-6">
             <div>
               <p className="text-[10px] uppercase tracking-[0.34em] text-black/40">
-                New In
+                Novidades
               </p>
               <h2 className="mt-4 text-3xl tracking-[-0.05em] md:text-5xl">
-                Latest arrivals
+                Últimas peças
               </h2>
             </div>
 
@@ -127,15 +105,15 @@ export default function Home() {
               href="/collection"
               className="hidden text-[10px] uppercase tracking-[0.32em] text-black/55 md:block"
             >
-              View full collection
+              Ver coleção completa
             </a>
           </div>
 
           {loading ? (
-            <p className="text-[14px] text-black/60">Carregando produtos...</p>
+            <p className="text-[14px] text-black/60">Carregando peças...</p>
           ) : featuredProducts.length === 0 ? (
             <p className="text-[14px] text-black/60">
-              Ainda não há produtos cadastrados.
+              Ainda não há peças cadastradas.
             </p>
           ) : (
             <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
@@ -169,6 +147,7 @@ export default function Home() {
           )}
         </div>
       </section>
+
       <Footer />
     </main>
   );

@@ -1,0 +1,140 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { getCartCount } from "@/src/lib/cart";
+
+export default function Header() {
+  const [cartCount, setCartCount] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const updateCartCount = () => {
+      setCartCount(getCartCount());
+    };
+
+    updateCartCount();
+
+    window.addEventListener("focus", updateCartCount);
+
+    return () => {
+      window.removeEventListener("focus", updateCartCount);
+    };
+  }, []);
+
+  return (
+    <header className="border-b border-black/10">
+      <div className="container-editorial relative flex items-center justify-between py-4">
+        {/* MOBILE MENU BUTTON */}
+        <button
+          type="button"
+          onClick={() => setMobileMenuOpen(true)}
+          className="md:hidden text-xl leading-none"
+          aria-label="Abrir menu"
+        >
+          ☰
+        </button>
+
+        {/* DESKTOP NAV */}
+        <nav className="hidden items-center gap-6 text-[11px] uppercase tracking-[0.28em] md:flex">
+          <a href="/">Início</a>
+          <a href="/collection">Coleção</a>
+          <a href="/about">Sobre</a>
+        </nav>
+
+        {/* LOGO */}
+        <a
+          href="/"
+          className="absolute left-1/2 -translate-x-1/2 text-[11px] uppercase tracking-[0.42em]"
+        >
+          The Lucky Club
+        </a>
+
+        {/* RIGHT SIDE */}
+        <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.28em]">
+          {/* DESKTOP */}
+          <div className="hidden items-center gap-6 md:flex">
+            <a href="/collection">Buscar</a>
+            <a href="#">Entrar</a>
+            <a href="/bag">Sacola ({cartCount})</a>
+          </div>
+
+          {/* MOBILE BAG */}
+          <a href="/bag" className="relative md:hidden" aria-label="Sacola">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              className="h-5 w-5"
+            >
+              <path
+                d="M6.5 8.5h11l-1.1 9.5a1 1 0 0 1-1 .9H8.6a1 1 0 0 1-1-.9L6.5 8.5Z"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M9 9V7.5a3 3 0 1 1 6 0V9"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+
+            {cartCount > 0 && (
+              <span className="absolute -right-2 -top-2 min-w-[18px] rounded-full bg-black px-1.5 py-[1px] text-center text-[10px] leading-4 text-white">
+                {cartCount}
+              </span>
+            )}
+          </a>
+        </div>
+      </div>
+
+      {/* MOBILE MENU */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-50 bg-black/30 md:hidden">
+          <div className="absolute left-0 top-0 h-full w-[82%] max-w-[320px] bg-[var(--background)] p-6 shadow-xl">
+            <div className="mb-10 flex items-center justify-between">
+              <span className="text-[11px] uppercase tracking-[0.28em] text-black/40">
+                Menu
+              </span>
+
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-2xl leading-none"
+                aria-label="Fechar menu"
+              >
+                ×
+              </button>
+            </div>
+
+            <nav className="flex flex-col gap-6 text-[14px] uppercase tracking-[0.18em] text-black/80">
+              <a href="/" onClick={() => setMobileMenuOpen(false)}>
+                Início
+              </a>
+              <a href="/collection" onClick={() => setMobileMenuOpen(false)}>
+                Coleção
+              </a>
+              <a href="/about" onClick={() => setMobileMenuOpen(false)}>
+                Sobre
+              </a>
+              <a href="/collection" onClick={() => setMobileMenuOpen(false)}>
+                Buscar
+              </a>
+              <a href="/bag" onClick={() => setMobileMenuOpen(false)}>
+                Sacola
+              </a>
+            </nav>
+          </div>
+
+          <button
+            type="button"
+            className="absolute inset-0 -z-10 h-full w-full"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Fechar menu"
+          />
+        </div>
+      )}
+    </header>
+  );
+}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { getCartCount } from "@/src/lib/cart";
+import Header from "@/components/Header";
 
 type Product = {
   id: number;
@@ -15,13 +15,14 @@ type Product = {
 export default function CollectionPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [cartCount, setCartCount] = useState(0);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Product`);
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/Product`
+        );
 
         if (!response.ok) {
           throw new Error("Erro ao buscar produtos");
@@ -39,19 +40,6 @@ export default function CollectionPage() {
     fetchProducts();
   }, []);
 
-  useEffect(() => {
-    const updateCartCount = () => {
-      setCartCount(getCartCount());
-    };
-
-    updateCartCount();
-    window.addEventListener("focus", updateCartCount);
-
-    return () => {
-      window.removeEventListener("focus", updateCartCount);
-    };
-  }, []);
-
   const filteredProducts = useMemo(() => {
     const term = search.trim().toLowerCase();
 
@@ -67,37 +55,17 @@ export default function CollectionPage() {
 
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
-      <header className="border-b border-black/10">
-        <div className="container-editorial flex items-center justify-between py-5 text-[11px] uppercase tracking-[0.28em]">
-          <nav className="hidden items-center gap-6 md:flex">
-            <a href="/">Home</a>
-            <a href="/collection">Collection</a>
-            <a href="/about">About</a>
-          </nav>
-
-          <a href="/" className="text-center tracking-[0.42em]">
-            The Lucky Club
-          </a>
-
-          <nav className="flex items-center gap-6">
-            <a href="/collection">Search</a>
-            <a href="#" className="hidden md:block">
-              Login
-            </a>
-            <a href="/bag">Bag ({cartCount})</a>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       <section className="container-editorial py-16">
         <div className="mb-12">
           <h1 className="mt-4 text-4xl tracking-[-0.05em] md:text-6xl">
-            Collection
+            Coleção
           </h1>
 
           <p className="mt-6 max-w-[520px] text-[15px] leading-8 text-black/65">
-            A refined selection of luxury second hand pieces chosen for their
-            timelessness, quality and individuality.
+            Uma seleção refinada de peças second hand de luxo, escolhidas pela
+            sua atemporalidade, qualidade e individualidade.
           </p>
         </div>
 
@@ -106,13 +74,13 @@ export default function CollectionPage() {
             htmlFor="collection-search"
             className="mb-3 block text-[10px] uppercase tracking-[0.32em] text-black/40"
           >
-            Search
+            Buscar
           </label>
 
           <input
             id="collection-search"
             type="text"
-            placeholder="Search by brand or piece"
+            placeholder="Buscar por marca ou peça"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full border border-black/10 bg-transparent px-4 py-3 text-[14px] outline-none placeholder:text-black/35 focus:border-black/30"
