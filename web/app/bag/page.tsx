@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import Header from "@/components/Header";
 import {
@@ -11,6 +12,8 @@ import {
 
 export default function BagPage() {
   const [items, setItems] = useState<CartItem[]>([]);
+
+  const whatsappNumber = "5554999484343";
 
   useEffect(() => {
     const refreshCart = () => {
@@ -45,11 +48,37 @@ export default function BagPage() {
     setItems(updatedCart);
   };
 
+  const handleCheckout = () => {
+    if (items.length === 0) return;
+
+    const itemsText = items
+      .map(
+        (item) =>
+          `• ${item.brand} ${item.name} — Qtd: ${item.quantity} — ${(
+            item.price * item.quantity
+          ).toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}`
+      )
+      .join("%0A");
+
+    const message =
+      `Olá! Gostaria de finalizar meu pedido na The Lucky Club.%0A%0A` +
+      `Itens:%0A${itemsText}%0A%0A` +
+      `Total: ${total.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      })}`;
+
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+  };
+
   return (
-    <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
+    <main className="bg-[var(--background)] text-[var(--foreground)]">
       <Header />
 
-      <div className="container-editorial py-16">
+      <div className="container-editorial py-10 md:py-16">
         <div className="mb-10">
           <p className="text-[10px] uppercase tracking-[0.34em] text-black/40">
             Sacola
@@ -78,17 +107,29 @@ export default function BagPage() {
               {items.map((item) => (
                 <div
                   key={item.id}
-                  className="grid gap-5 border-b border-black/10 pb-6 md:grid-cols-[140px_1fr]"
+                  className="flex gap-4 border-b border-black/10 pb-6"
                 >
-                  <div className="aspect-[3/4] bg-[#e8e3d8]" />
+                  <div className="relative h-[120px] w-[90px] shrink-0 overflow-hidden bg-[#e8e3d8] md:h-[180px] md:w-[140px]">
+                    {item.imageUrl ? (
+                      <Image
+                        src={item.imageUrl}
+                        alt={item.name}
+                        fill
+                        unoptimized
+                        className="object-cover"
+                      />
+                    ) : null}
+                  </div>
 
-                  <div className="flex flex-col justify-between">
+                  <div className="flex min-w-0 flex-1 flex-col justify-between">
                     <div>
-                      <p className="text-[10px] uppercase tracking-[0.28em] text-black/36">
+                      <p className="text-[9px] uppercase tracking-[0.28em] text-black/36 md:text-[10px]">
                         {item.brand}
                       </p>
 
-                      <h2 className="mt-2 text-[16px]">{item.name}</h2>
+                      <h2 className="mt-2 text-[15px] leading-snug md:text-[16px]">
+                        {item.name}
+                      </h2>
 
                       <p className="mt-2 text-[14px] text-black/60">
                         {item.price.toLocaleString("pt-BR", {
@@ -98,8 +139,8 @@ export default function BagPage() {
                       </p>
                     </div>
 
-                    <div className="mt-4 flex items-center gap-4">
-                      <button
+                    <div className="mt-4 flex flex-wrap items-center gap-3 md:gap-4">
+                      {/* <button
                         onClick={() =>
                           handleQuantityChange(item.id, item.quantity - 1)
                         }
@@ -117,11 +158,11 @@ export default function BagPage() {
                         className="border border-black px-3 py-1"
                       >
                         +
-                      </button>
+                      </button> */}
 
                       <button
                         onClick={() => handleRemove(item.id)}
-                        className="ml-4 text-[12px] uppercase tracking-[0.2em] text-black/50"
+                        className="text-[11px] uppercase tracking-[0.2em] text-black/50 md:ml-4 md:text-[12px]"
                       >
                         Remover
                       </button>
@@ -131,7 +172,7 @@ export default function BagPage() {
               ))}
             </div>
 
-            <div className="h-fit border border-black/10 p-8">
+            <div className="h-fit border border-black/10 p-6 md:p-8">
               <p className="text-[10px] uppercase tracking-[0.34em] text-black/40">
                 Resumo
               </p>
@@ -146,7 +187,10 @@ export default function BagPage() {
                 </span>
               </div>
 
-              <button className="mt-8 w-full border border-black px-6 py-4 text-[10px] uppercase tracking-[0.32em] transition hover:bg-black hover:text-[#f3f1e9]">
+              <button
+                onClick={handleCheckout}
+                className="mt-8 w-full border border-black px-6 py-4 text-[10px] uppercase tracking-[0.32em] transition hover:bg-black hover:text-[#f3f1e9]"
+              >
                 Finalizar pedido
               </button>
 

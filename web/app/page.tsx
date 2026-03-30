@@ -13,6 +13,7 @@ type Product = {
   price: number;
   condition: string;
   createdAt: string;
+  imageUrl?: string;
 };
 
 export default function Home() {
@@ -22,8 +23,6 @@ export default function Home() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
-        
         const response = await fetch(
           `${process.env.NEXT_PUBLIC_API_URL}/api/Product`
         );
@@ -61,28 +60,26 @@ export default function Home() {
         <div className="container-editorial py-6 md:py-8">
           <a href="/collection" className="mx-auto block max-w-[1050px]">
             {/* HERO MOBILE */}
-            <div className="relative aspect-[3/5] w-full overflow-hidden bg-[#d8d2c8] md:hidden">
+            <div className="relative aspect-[9/14] w-full overflow-hidden bg-[#d8d2c8] md:hidden">
               <Image
-                src="/images/hero-mobile.jpg"
+                src="/images/hero-mobile1.jpg"
                 alt="Imagem principal The Lucky Club"
                 fill
                 priority
-                className="object-cover"
+                className="object-cover object-left"
               />
-
               <div className="absolute inset-0 bg-black/10" />
             </div>
 
             {/* HERO DESKTOP */}
-            <div className="relative hidden aspect-[16/9] w-full overflow-hidden bg-[#d8d2c8] md:block">
+            <div className="relative hidden aspect-[24/15] w-full overflow-hidden bg-[#d8d2c8] md:block">
               <Image
-                src="/images/hero-desktop.jpg"
+                src="/images/hero-desk.jpg"
                 alt="Imagem principal The Lucky Club"
                 fill
                 priority
                 className="object-cover"
               />
-
               <div className="absolute inset-0 bg-black/10" />
             </div>
           </a>
@@ -116,33 +113,44 @@ export default function Home() {
               Ainda não há peças cadastradas.
             </p>
           ) : (
-            <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-              {featuredProducts.map((product) => (
-                <a
-                  key={product.id}
-                  href={`/collection/${product.id}`}
-                  className="block"
-                >
-                  <article>
-                    <div className="aspect-[3/4] overflow-hidden bg-[#e8e3d8] transition hover:opacity-90" />
+            <div className="overflow-x-auto pb-2">
+              <div className="flex gap-5 snap-x snap-mandatory">
+                {featuredProducts.map((product) => (
+                  <a
+                    key={product.id}
+                    href={`/collection/${product.id}`}
+                    className="min-w-[260px] max-w-[260px] flex-shrink-0 snap-start md:min-w-[320px] md:max-w-[320px]"
+                  >
+                    <article>
+                      <div className="relative aspect-[3/4] overflow-hidden bg-[#e8e3d8]">
+                        {product.imageUrl ? (
+                          <Image
+                            src={product.imageUrl}
+                            alt={product.name}
+                            fill
+                            className="object-cover transition hover:scale-[1.03]"
+                          />
+                        ) : null}
+                      </div>
 
-                    <div className="pt-4">
-                      <p className="text-[10px] uppercase tracking-[0.28em] text-black/36">
-                        {product.brand}
-                      </p>
+                      <div className="pt-4">
+                        <p className="text-[10px] uppercase tracking-[0.28em] text-black/36">
+                          {product.brand}
+                        </p>
 
-                      <h3 className="mt-2 text-[14px]">{product.name}</h3>
+                        <h3 className="mt-2 text-[14px]">{product.name}</h3>
 
-                      <p className="mt-2 text-[13px] text-black/56">
-                        {product.price.toLocaleString("pt-BR", {
-                          style: "currency",
-                          currency: "BRL",
-                        })}
-                      </p>
-                    </div>
-                  </article>
-                </a>
-              ))}
+                        <p className="mt-2 text-[13px] text-black/56">
+                          {product.price.toLocaleString("pt-BR", {
+                            style: "currency",
+                            currency: "BRL",
+                          })}
+                        </p>
+                      </div>
+                    </article>
+                  </a>
+                ))}
+              </div>
             </div>
           )}
         </div>

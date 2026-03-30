@@ -37,6 +37,11 @@ export default function Footer() {
                 Sobre
               </a>
             </li>
+            <li>
+              <a href="/desapegue" className="hover:underline">
+                Desapegue
+              </a>
+            </li>
           </ul>
         </div>
 
@@ -48,13 +53,22 @@ export default function Footer() {
 
           <ul className="mt-4 space-y-2 text-black/70">
             <li>
-              <a href="#" className="hover:underline">
+              <a href="https://www.instagram.com/luckyfindsclub?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="hover:underline">
                 Instagram
               </a>
             </li>
             <li>
-              <a href="mailto:contato@theluckyclub.com" className="hover:underline">
+              <a href="luckyfindsclub@gmail.com" className="hover:underline">
                 Email
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://wa.me/5554999484343?text=Olá,%20tenho%20interesse%20em%20uma%20peça%20do%20The%20Lucky%20Club"
+                target="_blank"
+                className="hover:underline"
+              >
+                WhatsApp
               </a>
             </li>
             <li>Caxias do Sul, RS</li>

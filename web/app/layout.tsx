@@ -35,8 +35,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${perandory.variable} ${vintageGoods.variable}`}>
+    <html lang="pt-BR" suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        className={`${perandory.variable} ${vintageGoods.variable}`}
+      >
         {children}
       </body>
     </html>

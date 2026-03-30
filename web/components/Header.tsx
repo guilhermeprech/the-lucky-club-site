@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getCartCount } from "@/src/lib/cart";
+import { cartUpdatedEvent, getCartCount } from "@/src/lib/cart";
 
 export default function Header() {
   const [cartCount, setCartCount] = useState(0);
@@ -15,9 +15,11 @@ export default function Header() {
     updateCartCount();
 
     window.addEventListener("focus", updateCartCount);
+    window.addEventListener(cartUpdatedEvent, updateCartCount);
 
     return () => {
       window.removeEventListener("focus", updateCartCount);
+      window.removeEventListener(cartUpdatedEvent, updateCartCount);
     };
   }, []);
 
@@ -44,17 +46,22 @@ export default function Header() {
         {/* LOGO */}
         <a
           href="/"
-          className="absolute left-1/2 -translate-x-1/2 text-[11px] uppercase tracking-[0.42em]"
+          className="absolute left-1/2 flex -translate-x-1/2 items-center gap-2 text-[11px] uppercase tracking-[0.42em]"
         >
-          The Lucky Club
+          <img
+            src="/images/logo-icon.png"
+            alt="Logo The Lucky Club"
+            className="h-6 w-6 object-contain"
+          />
+          <span>The Lucky Club</span>
         </a>
 
         {/* RIGHT SIDE */}
         <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.28em]">
           {/* DESKTOP */}
           <div className="hidden items-center gap-6 md:flex">
-            <a href="/collection">Buscar</a>
-            <a href="#">Entrar</a>
+            <a href="/desapegue">Desapegue</a>
+            <a href="/login">Entrar</a>
             <a href="/bag">Sacola ({cartCount})</a>
           </div>
 
@@ -118,8 +125,8 @@ export default function Header() {
               <a href="/about" onClick={() => setMobileMenuOpen(false)}>
                 Sobre
               </a>
-              <a href="/collection" onClick={() => setMobileMenuOpen(false)}>
-                Buscar
+              <a href="/desapegue" onClick={() => setMobileMenuOpen(false)}>
+                Desapegue
               </a>
               <a href="/bag" onClick={() => setMobileMenuOpen(false)}>
                 Sacola

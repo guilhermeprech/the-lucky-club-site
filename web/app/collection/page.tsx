@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import Header from "@/components/Header";
 
@@ -10,6 +11,7 @@ type Product = {
   description: string;
   price: number;
   condition: string;
+  imageUrl?: string;
 };
 
 export default function CollectionPage() {
@@ -94,14 +96,23 @@ export default function CollectionPage() {
             Nenhuma peça encontrada.
           </p>
         ) : (
-          <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-6">
             {filteredProducts.map((product) => (
               <a
                 key={product.id}
                 href={`/collection/${product.id}`}
                 className="block"
               >
-                <div className="aspect-[3/4] bg-[#e8e3d8]" />
+                <div className="relative aspect-[3/4] overflow-hidden bg-[#e8e3d8]">
+                  {product.imageUrl ? (
+                    <Image
+                      src={product.imageUrl}
+                      alt={product.name}
+                      fill
+                      className="object-cover transition duration-300 hover:scale-[1.02]"
+                    />
+                  ) : null}
+                </div>
 
                 <div className="pt-4">
                   <p className="text-[10px] uppercase tracking-[0.28em] text-black/36">
