@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🐎 The Lucky Club
 
-## Getting Started
+> Premium second-hand fashion e-commerce with a curated luxury experience.
 
-First, run the development server:
+🌐 https://theluckyclub.com.br
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Overview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The Lucky Club is a modern e-commerce platform focused on curated luxury and semi-luxury fashion pieces.  
+Built with a minimalist aesthetic and high-end user experience in mind, the project combines performance, clean design, and real-world deployment practices.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚀 Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+### Frontend
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Backend
+- ASP.NET Core Web API (.NET)
+- PostgreSQL
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Infrastructure
+- Vercel (Frontend Hosting)
+- Railway (Backend Hosting)
+- Registro.br (Domain & DNS)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧠 Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 🛍️ Dynamic product listing from API
+- 🧾 Product detail pages
+- 👜 Shopping bag (cart)
+- 🔗 Integration with .NET backend
+- ⚡ Fast and optimized frontend (Next.js)
+- 🌍 Custom domain with SSL
+- 🔍 SEO optimized (OpenGraph + Sitemap + Metadata)
+
+---
+
+## 📸 Preview
+
+Preview
+
+---
+
+## 🏗️ Architecture
+
+Frontend (Next.js - Vercel)  
+↓  
+API (ASP.NET Core - Railway)  
+↓  
+Database (PostgreSQL)
+
+---
+
+## ⚙️ Running Locally
+
+git clone https://github.com/guilhermeprech/the-lucky-club-site.git  
+cd the-lucky-club-site  
+npm install  
+npm run dev  
+
+---
+
+## 📦 Deployment
+
+- Frontend deployed on Vercel  
+- Backend deployed on Railway  
+- Domain configured via Registro.br  
+- Automatic HTTPS enabled  
+
+---
+
+## 📈 SEO & Performance
+
+- OpenGraph configured for social sharing  
+- Sitemap.xml implemented  
+- Google Search Console integration  
+- Optimized images and metadata  
+
+---
+
+## 👨‍💻 Author
+
+Guilherme Rech  
+
+🌐 https://guilhermerech.com.br
+💼 https://www.linkedin.com/in/guilherme-pasquali-rech-446a92355  
+📧 luckyfindsclub@gmail.com  
+
+---
+
+## 📩 Contact
+
+Instagram: https://www.instagram.com/luckyfindsclub  
+Email: luckyfindsclub@gmail.com  
+
+---
+
+## 🧩 Future Improvements
+
+- 🔐 Authentication (login system)  
+- 💳 Payment integration  
+- 🔎 Advanced search & filters  
+- 📊 Admin dashboard improvements  
+- 📱 Mobile UX enhancements  
+
+---
+
+## ⭐ Final Notes
+
+This project was built as a real-world production application, covering:
+
+- Full-stack development  
+- Deployment & infrastructure  
+- Domain & DNS configuration  
+- SEO & indexing  
+- API integration  
+
+---
+
+> Built with attention to detail, performance, and elega

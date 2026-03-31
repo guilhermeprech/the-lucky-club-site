@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Header from "@/components/Header";
+import Header from "@/app/components/Header";
 import { addToCart } from "@/src/lib/cart";
 
 type Product = {

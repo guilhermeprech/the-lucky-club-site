@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     siteName: "The Lucky Club",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://theluckyclub.com.br/og-image.png",
         width: 1200,
         height: 630,
       },
