@@ -22,7 +22,7 @@ export default function AboutPage() {
 
           <div className="order-2">
             <h1 className="mt-4 max-w-[420px] text-4xl leading-[1] tracking-[-0.05em] md:text-6xl">
-              Uma forma mais sutil de descobrir o luxo.
+              Welcome to the club!
             </h1>
 
             <div className="mt-8 max-w-[720px] text-[15px] leading-8 text-black/66">

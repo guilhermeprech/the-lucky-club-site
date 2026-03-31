@@ -1,5 +1,36 @@
 import localFont from "next/font/local";
 import "./globals.css";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "The Lucky Club",
+  description: "Second hand premium fashion",
+  metadataBase: new URL("https://theluckyclub.com.br"),
+
+  verification: {
+    google: "c8YmN8aFY_j-3wFfcRgEjrCayBiJfkuY0g8NCC2sM0s",
+  },
+
+  openGraph: {
+    title: "The Lucky Club",
+    description: "Second hand premium fashion",
+    url: "https://theluckyclub.com.br",
+    siteName: "The Lucky Club",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "pt_BR",
+    type: "website",
+  },
+
+  icons: {
+    icon: "/icon.png",
+  },
+};
 
 const perandory = localFont({
   src: [

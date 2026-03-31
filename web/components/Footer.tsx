@@ -58,9 +58,12 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="luckyfindsclub@gmail.com" className="hover:underline">
-                Email
-              </a>
+            <a
+              href="mailto:luckyfindsclub@gmail.com?subject=Contato%20The%20Lucky%20Club"
+              className="hover:underline"
+            >
+              Email
+            </a>
             </li>
             <li>
               <a
@@ -77,15 +80,23 @@ export default function Footer() {
       </div>
 
       {/* Desenvolvedor */}
-      <div className="border-t border-black/10 py-6 text-center text-[11px] text-black/50">
-        Website developed by{" "}
-        <a
-          href="https://guilhermerech.com.br"
-          target="_blank"
-          className="underline hover:text-black"
-        >
-          Guilherme Pasquali Rech
-        </a>
+      <div className="border-t border-black/10 mt-10">
+        <div className="container-editorial py-5 flex flex-col md:flex-row md:items-center md:justify-between text-[11px] text-black/50">
+          
+          <span>
+            © {new Date().getFullYear()} The Lucky Club. Todos os direitos reservados.
+          </span>
+
+          <a
+            href="https://guilhermerech.com.br"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-black transition"
+          >
+            Desenvolvimento por Guilherme Rech — Soluções digitais sob medida.
+          </a>
+
+        </div>
       </div>
     </footer>
   );
