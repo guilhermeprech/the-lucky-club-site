@@ -67,7 +67,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="https://wa.me/5554999484343?text=Olá,%20tenho%20interesse%20em%20uma%20peça%20do%20The%20Lucky%20Club"
+                href="https://wa.me/5554997093265?text=Olá,%20tenho%20interesse%20em%20uma%20peça%20do%20The%20Lucky%20Club"
                 target="_blank"
                 className="hover:underline"
               >
