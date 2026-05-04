@@ -14,7 +14,7 @@ export default function DesapeguePage() {
   const [description, setDescription] = useState("");
   const [photoLinks, setPhotoLinks] = useState("");
 
-  const whatsappNumber = "5554999484343";
+  const whatsappNumber = "5554997093265";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
