@@ -1,7 +1,5 @@
-"use client";
-
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
 
@@ -16,41 +14,33 @@ type Product = {
   imageUrl?: string;
 };
 
-export default function Home() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+async function getProducts(): Promise<Product[]> {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/Product`
-        );
+  if (!apiUrl) return [];
 
-        if (!response.ok) {
-          throw new Error("Erro ao buscar produtos");
-        }
+  try {
+    const res = await fetch(`${apiUrl}/api/Product`, {
+      next: { revalidate: 60 },
+    });
 
-        const data: Product[] = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error("Erro ao buscar produtos:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    if (!res.ok) return [];
 
-    fetchProducts();
-  }, []);
+    return res.json();
+  } catch {
+    return [];
+  }
+}
 
-  const featuredProducts = useMemo(() => {
-    return [...products]
-      .sort(
-        (a, b) =>
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-      )
-      .slice(0, 4);
-  }, [products]);
+export default async function Home() {
+  const products = await getProducts();
+
+  const featuredProducts = [...products]
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    )
+    .slice(0, 4);
 
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
@@ -58,31 +48,31 @@ export default function Home() {
 
       <section className="border-b border-black/10">
         <div className="container-editorial py-6 md:py-8">
-          <a href="/collection" className="mx-auto block max-w-[1050px]">
-            {/* HERO MOBILE */}
+          <Link href="/collection" className="mx-auto block max-w-[1050px]">
             <div className="relative aspect-[9/14] w-full overflow-hidden bg-[#d8d2c8] md:hidden">
               <Image
                 src="/images/hero-mobile1.jpg"
                 alt="Imagem principal The Lucky Club"
                 fill
                 priority
+                sizes="100vw"
                 className="object-cover object-left"
               />
               <div className="absolute inset-0 bg-black/10" />
             </div>
 
-            {/* HERO DESKTOP */}
             <div className="relative hidden aspect-[24/15] w-full overflow-hidden bg-[#d8d2c8] md:block">
               <Image
                 src="/images/hero-desk.jpg"
                 alt="Imagem principal The Lucky Club"
                 fill
                 priority
+                sizes="1050px"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-black/10" />
             </div>
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -98,27 +88,27 @@ export default function Home() {
               </h2>
             </div>
 
-            <a
+            <Link
               href="/collection"
+              prefetch
               className="hidden text-[10px] uppercase tracking-[0.32em] text-black/55 md:block"
             >
               Ver coleção completa
-            </a>
+            </Link>
           </div>
 
-          {loading ? (
-            <p className="text-[14px] text-black/60">Carregando peças...</p>
-          ) : featuredProducts.length === 0 ? (
+          {featuredProducts.length === 0 ? (
             <p className="text-[14px] text-black/60">
               Ainda não há peças cadastradas.
             </p>
           ) : (
             <div className="overflow-x-auto pb-2">
-              <div className="flex gap-5 snap-x snap-mandatory">
-                {featuredProducts.map((product) => (
-                  <a
+              <div className="flex snap-x snap-mandatory gap-5">
+                {featuredProducts.map((product, index) => (
+                  <Link
                     key={product.id}
                     href={`/collection/${product.id}`}
+                    prefetch
                     className="min-w-[260px] max-w-[260px] flex-shrink-0 snap-start md:min-w-[320px] md:max-w-[320px]"
                   >
                     <article>
@@ -128,6 +118,8 @@ export default function Home() {
                             src={product.imageUrl}
                             alt={product.name}
                             fill
+                            priority={index === 0}
+                            sizes="(max-width: 768px) 260px, 320px"
                             className="object-cover transition hover:scale-[1.03]"
                           />
                         ) : null}
@@ -148,7 +140,7 @@ export default function Home() {
                         </p>
                       </div>
                     </article>
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

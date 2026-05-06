@@ -1,9 +1,7 @@
-"use client";
-
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import Link from "next/link";
 import Header from "@/app/components/Header";
-import { addToCart } from "@/src/lib/cart";
+import AddToBagButton from "./AddToBagButton";
 
 type Product = {
   id: number;
@@ -21,69 +19,47 @@ type PageProps = {
   }>;
 };
 
-export default function ProductDetailPage({ params }: PageProps) {
-  const [product, setProduct] = useState<Product | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [showToast, setShowToast] = useState(false);
+async function getProduct(id: string): Promise<Product | null> {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const resolvedParams = await params;
+  if (!apiUrl) {
+    return null;
+  }
 
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/Product/${resolvedParams.id}`
-        );
-
-        if (!response.ok) {
-          throw new Error("Erro ao buscar produto");
-        }
-
-        const data: Product = await response.json();
-        setProduct(data);
-      } catch (error) {
-        console.error("Erro ao buscar produto:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProduct();
-  }, [params]);
-
-  const handleAddToBag = () => {
-    if (!product) return;
-
-    addToCart({
-      id: product.id,
-      name: product.name,
-      brand: product.brand,
-      price: product.price,
-      imageUrl: product.imageUrl || "",
+  try {
+    const response = await fetch(`${apiUrl}/api/Product/${id}`, {
+      next: { revalidate: 60 },
     });
 
-    setShowToast(true);
+    if (!response.ok) {
+      return null;
+    }
 
-    setTimeout(() => {
-      setShowToast(false);
-    }, 2500);
-  };
-
-  if (loading) {
-    return (
-      <main className="bg-[var(--background)] text-[var(--foreground)]">
-        <div className="container-editorial py-10 md:py-16">
-          <p>Carregando peça...</p>
-        </div>
-      </main>
-    );
+    return response.json();
+  } catch {
+    return null;
   }
+}
+
+export default async function ProductDetailPage({ params }: PageProps) {
+  const { id } = await params;
+  const product = await getProduct(id);
 
   if (!product) {
     return (
       <main className="bg-[var(--background)] text-[var(--foreground)]">
+        <Header />
+
         <div className="container-editorial py-10 md:py-16">
           <p>Peça não encontrada.</p>
+
+          <Link
+            href="/collection"
+            prefetch
+            className="mt-6 inline-block text-[11px] uppercase tracking-[0.28em] text-black/55"
+          >
+            Voltar para a coleção
+          </Link>
         </div>
       </main>
     );
@@ -100,7 +76,8 @@ export default function ProductDetailPage({ params }: PageProps) {
               src={product.imageUrl}
               alt={product.name}
               fill
-              unoptimized
+              priority
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
           ) : null}
@@ -125,43 +102,32 @@ export default function ProductDetailPage({ params }: PageProps) {
           <p className="mt-5 text-[12px] uppercase tracking-[0.25em] text-black/45 md:mt-6">
             Condição
           </p>
-          <p className="mt-2 text-[15px] text-black/70">{product.condition}</p>
+
+          <p className="mt-2 text-[15px] text-black/70">
+            {product.condition}
+          </p>
 
           <p className="mt-6 text-[12px] uppercase tracking-[0.25em] text-black/45 md:mt-7">
             Descrição
           </p>
+
           <p className="mt-2 text-[15px] leading-7 text-black/70 md:leading-8">
             {product.description}
           </p>
 
           <div className="mt-4 flex flex-col gap-3 md:mt-8 md:flex-row md:items-center md:gap-4">
-            <button
-              onClick={handleAddToBag}
-              className="border border-black px-6 py-3 text-[11px] uppercase tracking-[0.28em] transition hover:bg-black hover:text-[#f3f1e9]"
-            >
-              Adicionar à sacola
-            </button>
+            <AddToBagButton product={product} />
 
-            <a
+            <Link
               href="/collection"
+              prefetch
               className="py-3 text-center text-[11px] uppercase tracking-[0.28em] text-black/55 md:px-2"
             >
               Voltar para a coleção
-            </a>
+            </Link>
           </div>
         </div>
       </section>
-
-      {showToast && (
-        <div className="fixed bottom-6 right-6 z-50 border border-black/10 bg-[var(--background)] px-5 py-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
-          <p className="text-[10px] uppercase tracking-[0.28em] text-black/40">
-            Sacola
-          </p>
-          <p className="mt-2 text-[14px] text-black/80">
-            Peça adicionada com sucesso.
-          </p>
-        </div>
-      )}
     </main>
   );
 }
