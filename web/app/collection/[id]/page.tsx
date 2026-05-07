@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import AddToBagButton from "./AddToBagButton";
+import { supabase } from "@/src/lib/supabase";
 
 type Product = {
   id: number;
@@ -20,25 +21,25 @@ type PageProps = {
 };
 
 async function getProduct(id: string): Promise<Product | null> {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const { data, error } = await supabase
+    .from("Products")
+    .select("Id, Name, Brand, Description, Price, Condition, ImageUrl")
+    .eq("Id", Number(id))
+    .single();
 
-  if (!apiUrl) {
+  if (error || !data) {
     return null;
   }
 
-  try {
-    const response = await fetch(`${apiUrl}/api/Product/${id}`, {
-      next: { revalidate: 60 },
-    });
-
-    if (!response.ok) {
-      return null;
-    }
-
-    return response.json();
-  } catch {
-    return null;
-  }
+  return {
+    id: data.Id,
+    name: data.Name ?? "",
+    brand: data.Brand ?? "",
+    description: data.Description ?? "",
+    price: Number(data.Price ?? 0),
+    condition: data.Condition ?? "",
+    imageUrl: data.ImageUrl ?? "",
+  };
 }
 
 export default async function ProductDetailPage({ params }: PageProps) {

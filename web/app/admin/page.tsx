@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import { supabase } from "@/src/lib/supabase";
 
 type Product = {
   id: number;
@@ -32,6 +33,18 @@ const emptyForm: ProductForm = {
   imageUrl: "",
 };
 
+function formatProduct(product: any): Product {
+  return {
+    id: product.Id,
+    name: product.Name ?? "",
+    brand: product.Brand ?? "",
+    description: product.Description ?? "",
+    price: Number(product.Price ?? 0),
+    condition: product.Condition ?? "",
+    imageUrl: product.ImageUrl ?? "",
+  };
+}
+
 export default function AdminPage() {
   const [products, setProducts] = useState<Product[]>([]);
   const [form, setForm] = useState<ProductForm>(emptyForm);
@@ -41,18 +54,18 @@ export default function AdminPage() {
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState("");
 
-  const apiBase = `${process.env.NEXT_PUBLIC_API_URL}/api/Product`;
-
   const fetchProducts = async () => {
     try {
-      const response = await fetch(apiBase, { cache: "no-store" });
+      const { data, error } = await supabase
+        .from("Products")
+        .select("Id, Name, Brand, Description, Price, Condition, ImageUrl, CreatedAt")
+        .order("CreatedAt", { ascending: false });
 
-      if (!response.ok) {
-        throw new Error("Erro ao buscar produtos");
+      if (error) {
+        throw error;
       }
 
-      const data: Product[] = await response.json();
-      setProducts(data);
+      setProducts((data ?? []).map(formatProduct));
     } catch (error) {
       console.error(error);
       setMessage("Erro ao carregar produtos.");
@@ -133,12 +146,10 @@ export default function AdminPage() {
     if (!confirmed) return;
 
     try {
-      const response = await fetch(`${apiBase}/${id}`, {
-        method: "DELETE",
-      });
+      const { error } = await supabase.from("Products").delete().eq("Id", id);
 
-      if (!response.ok) {
-        throw new Error("Erro ao excluir produto");
+      if (error) {
+        throw error;
       }
 
       setProducts((prev) => prev.filter((product) => product.id !== id));
@@ -157,33 +168,37 @@ export default function AdminPage() {
 
     try {
       const payload = {
-        name: form.name,
-        brand: form.brand,
-        description: form.description,
-        price: Number(form.price),
-        condition: form.condition,
-        imageUrl: form.imageUrl,
+        Name: form.name,
+        Brand: form.brand,
+        Description: form.description,
+        Price: Number(form.price),
+        Condition: form.condition,
+        ImageUrl: form.imageUrl,
       };
 
-      const response = await fetch(
-        editingId ? `${apiBase}/${editingId}` : apiBase,
-        {
-          method: editingId ? "PUT" : "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(
-            editingId ? { id: editingId, ...payload } : payload
-          ),
-        }
-      );
+      if (editingId) {
+        const { error } = await supabase
+          .from("Products")
+          .update(payload)
+          .eq("Id", editingId);
 
-      if (!response.ok) {
-        throw new Error("Erro ao salvar produto");
+        if (error) {
+          throw error;
+        }
+      } else {
+        const { error } = await supabase.from("Products").insert({
+          ...payload,
+          CreatedAt: new Date().toISOString(),
+        });
+
+        if (error) {
+          throw error;
+        }
       }
 
       await fetchProducts();
       resetForm();
+
       setMessage(
         editingId
           ? "Peça atualizada com sucesso."

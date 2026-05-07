@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useMemo, useState } from "react";
 import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
+import { supabase } from "@/src/lib/supabase";
 
 type Product = {
   id: number;
@@ -14,33 +18,57 @@ type Product = {
   imageUrl?: string;
 };
 
-async function getProducts(): Promise<Product[]> {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+export default function Home() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
 
-  if (!apiUrl) return [];
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("Products")
+          .select(
+            'Id, Name, Brand, Description, Price, Condition, ImageUrl, CreatedAt'
+          )
+          .order("CreatedAt", { ascending: false });
 
-  try {
-    const res = await fetch(`${apiUrl}/api/Product`, {
-      next: { revalidate: 60 },
-    });
+        if (error) {
+          throw error;
+        }
 
-    if (!res.ok) return [];
+        const formattedProducts: Product[] = (data ?? []).map((product) => ({
+          id: product.Id,
+          name: product.Name ?? "",
+          brand: product.Brand ?? "",
+          description: product.Description ?? "",
+          price: Number(product.Price ?? 0),
+          condition: product.Condition ?? "",
+          imageUrl: product.ImageUrl ?? "",
+          createdAt: product.CreatedAt ?? "",
+        }));
 
-    return res.json();
-  } catch {
-    return [];
-  }
-}
+        setProducts(formattedProducts);
+        setHasError(false);
+      } catch (error) {
+        console.error("Erro ao buscar produtos:", error);
+        setHasError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-export default async function Home() {
-  const products = await getProducts();
+    fetchProducts();
+  }, []);
 
-  const featuredProducts = [...products]
-    .sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    )
-    .slice(0, 4);
+  const featuredProducts = useMemo(() => {
+    return [...products]
+      .sort(
+        (a, b) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      )
+      .slice(0, 4);
+  }, [products]);
 
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
@@ -48,7 +76,7 @@ export default async function Home() {
 
       <section className="border-b border-black/10">
         <div className="container-editorial py-6 md:py-8">
-          <Link href="/collection" className="mx-auto block max-w-[1050px]">
+          <Link href="/collection" prefetch className="mx-auto block max-w-[1050px]">
             <div className="relative aspect-[9/14] w-full overflow-hidden bg-[#d8d2c8] md:hidden">
               <Image
                 src="/images/hero-mobile1.jpg"
@@ -97,7 +125,13 @@ export default async function Home() {
             </Link>
           </div>
 
-          {featuredProducts.length === 0 ? (
+          {loading ? (
+            <p className="text-[14px] text-black/60">Carregando peças...</p>
+          ) : hasError ? (
+            <p className="text-[14px] text-black/60">
+              Não foi possível carregar as peças agora. Atualize a página em alguns segundos.
+            </p>
+          ) : featuredProducts.length === 0 ? (
             <p className="text-[14px] text-black/60">
               Ainda não há peças cadastradas.
             </p>

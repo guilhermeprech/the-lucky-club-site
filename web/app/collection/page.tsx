@@ -1,5 +1,6 @@
 import Header from "@/app/components/Header";
 import CollectionClient from "./CollectionClient";
+import { supabase } from "@/src/lib/supabase";
 
 type Product = {
   id: number;
@@ -12,21 +13,25 @@ type Product = {
 };
 
 async function getProducts(): Promise<Product[]> {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const { data, error } = await supabase
+    .from("Products")
+    .select("Id, Name, Brand, Description, Price, Condition, ImageUrl")
+    .order("CreatedAt", { ascending: false });
 
-  if (!apiUrl) return [];
-
-  try {
-    const res = await fetch(`${apiUrl}/api/Product`, {
-      next: { revalidate: 60 },
-    });
-
-    if (!res.ok) return [];
-
-    return res.json();
-  } catch {
+  if (error) {
+    console.error("Erro ao buscar produtos:", error);
     return [];
   }
+
+  return (data ?? []).map((product) => ({
+    id: product.Id,
+    name: product.Name ?? "",
+    brand: product.Brand ?? "",
+    description: product.Description ?? "",
+    price: Number(product.Price ?? 0),
+    condition: product.Condition ?? "",
+    imageUrl: product.ImageUrl ?? "",
+  }));
 }
 
 export default async function CollectionPage() {

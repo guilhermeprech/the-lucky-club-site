@@ -38,6 +38,7 @@ export default function AddToBagButton({ product }: { product: Product }) {
       >
         Adicionar à sacola
       </button>
+      
 
       {showToast && (
         <div className="fixed bottom-6 right-6 z-50 border border-black/10 bg-[var(--background)] px-5 py-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
