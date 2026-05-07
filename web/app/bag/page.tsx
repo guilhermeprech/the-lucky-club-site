@@ -13,7 +13,7 @@ import {
 export default function BagPage() {
   const [items, setItems] = useState<CartItem[]>([]);
 
-  const whatsappNumber = "5554999484343";
+  const whatsappNumber = "5554997093265";
 
   useEffect(() => {
     const refreshCart = () => {
