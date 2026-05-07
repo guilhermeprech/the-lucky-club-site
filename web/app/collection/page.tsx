@@ -2,6 +2,9 @@ import Header from "@/app/components/Header";
 import CollectionClient from "./CollectionClient";
 import { supabase } from "@/src/lib/supabase";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 type Product = {
   id: number;
   name: string;
@@ -15,16 +18,16 @@ type Product = {
 async function getProducts(): Promise<Product[]> {
   const { data, error } = await supabase
     .from("Products")
-    .select("Id, Name, Brand, Description, Price, Condition, ImageUrl")
+    .select("Id, Name, Brand, Description, Price, Condition, ImageUrl, CreatedAt")
     .order("CreatedAt", { ascending: false });
 
   if (error) {
-    console.error("Erro ao buscar produtos:", error);
+    console.error("Erro ao buscar produtos:", error.message);
     return [];
   }
 
   return (data ?? []).map((product) => ({
-    id: product.Id,
+    id: Number(product.Id),
     name: product.Name ?? "",
     brand: product.Brand ?? "",
     description: product.Description ?? "",
