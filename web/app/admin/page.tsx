@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
 import { supabase } from "@/src/lib/supabase";
+
+const CATEGORIES = ["Bolsas", "Calçados", "Acessórios"];
 
 type Product = {
   id: number;
@@ -13,6 +16,7 @@ type Product = {
   price: number;
   condition: string;
   imageUrl: string;
+  category: string;
 };
 
 type ProductForm = {
@@ -22,6 +26,7 @@ type ProductForm = {
   price: string;
   condition: string;
   imageUrl: string;
+  category: string;
 };
 
 const emptyForm: ProductForm = {
@@ -31,6 +36,7 @@ const emptyForm: ProductForm = {
   price: "",
   condition: "",
   imageUrl: "",
+  category: "Bolsas",
 };
 
 function formatProduct(product: any): Product {
@@ -42,10 +48,13 @@ function formatProduct(product: any): Product {
     price: Number(product.Price ?? 0),
     condition: product.Condition ?? "",
     imageUrl: product.ImageUrl ?? "",
+    category: product.Category ?? "",
   };
 }
 
 export default function AdminPage() {
+  const router = useRouter();
+
   const [products, setProducts] = useState<Product[]>([]);
   const [form, setForm] = useState<ProductForm>(emptyForm);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -58,12 +67,12 @@ export default function AdminPage() {
     try {
       const { data, error } = await supabase
         .from("Products")
-        .select("Id, Name, Brand, Description, Price, Condition, ImageUrl, CreatedAt")
+        .select(
+          "Id, Name, Brand, Description, Price, Condition, ImageUrl, Category, CreatedAt"
+        )
         .order("CreatedAt", { ascending: false });
 
-      if (error) {
-        throw error;
-      }
+      if (error) throw error;
 
       setProducts((data ?? []).map(formatProduct));
     } catch (error) {
@@ -75,8 +84,28 @@ export default function AdminPage() {
   };
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+    const checkUser = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      if (!session) {
+        router.push("/login");
+        return;
+      }
+
+      const isAdmin = session.user.user_metadata?.role === "admin";
+
+      if (!isAdmin) {
+        router.push("/account");
+        return;
+      }
+
+      fetchProducts();
+    };
+
+    checkUser();
+  }, [router]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -104,9 +133,7 @@ export default function AdminPage() {
         }
       );
 
-      if (!res.ok) {
-        throw new Error("Erro ao enviar imagem");
-      }
+      if (!res.ok) throw new Error("Erro ao enviar imagem");
 
       const result = await res.json();
 
@@ -136,6 +163,7 @@ export default function AdminPage() {
       price: String(product.price),
       condition: product.condition,
       imageUrl: product.imageUrl || "",
+      category: product.category || "Bolsas",
     });
     setMessage("");
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -148,9 +176,7 @@ export default function AdminPage() {
     try {
       const { error } = await supabase.from("Products").delete().eq("Id", id);
 
-      if (error) {
-        throw error;
-      }
+      if (error) throw error;
 
       setProducts((prev) => prev.filter((product) => product.id !== id));
       setMessage("Peça excluída com sucesso.");
@@ -174,6 +200,7 @@ export default function AdminPage() {
         Price: Number(form.price),
         Condition: form.condition,
         ImageUrl: form.imageUrl,
+        Category: form.category,
       };
 
       if (editingId) {
@@ -182,18 +209,14 @@ export default function AdminPage() {
           .update(payload)
           .eq("Id", editingId);
 
-        if (error) {
-          throw error;
-        }
+        if (error) throw error;
       } else {
         const { error } = await supabase.from("Products").insert({
           ...payload,
           CreatedAt: new Date().toISOString(),
         });
 
-        if (error) {
-          throw error;
-        }
+        if (error) throw error;
       }
 
       await fetchProducts();
@@ -221,9 +244,11 @@ export default function AdminPage() {
           <p className="text-[10px] uppercase tracking-[0.34em] text-black/40">
             Admin
           </p>
+
           <h1 className="mt-4 text-4xl tracking-[-0.05em] md:text-6xl">
             Gerenciar peças
           </h1>
+
           <p className="mt-6 max-w-[620px] text-[15px] leading-8 text-black/65">
             Cadastre, edite e exclua peças da coleção.
           </p>
@@ -304,6 +329,30 @@ export default function AdminPage() {
                   required
                   className="w-full border border-black/10 bg-transparent px-4 py-3 outline-none"
                 />
+              </div>
+
+              <div>
+                <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-black/45">
+                  Categoria
+                </label>
+
+                <select
+                  name="category"
+                  value={form.category}
+                  onChange={(e) =>
+                    setForm((prev) => ({
+                      ...prev,
+                      category: e.target.value,
+                    }))
+                  }
+                  className="w-full border border-black/10 bg-transparent px-4 py-3 outline-none"
+                >
+                  {CATEGORIES.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
               </div>
 
               <div>
@@ -412,16 +461,27 @@ export default function AdminPage() {
                             <p className="text-[10px] uppercase tracking-[0.28em] text-black/36">
                               {product.brand}
                             </p>
-                            <h2 className="mt-2 text-[18px]">{product.name}</h2>
+
+                            <h2 className="mt-2 text-[18px]">
+                              {product.name}
+                            </h2>
+
                             <p className="mt-2 text-[14px] text-black/60">
                               {product.price.toLocaleString("pt-BR", {
                                 style: "currency",
                                 currency: "BRL",
                               })}
                             </p>
+
                             <p className="mt-2 text-[13px] text-black/50">
                               {product.condition}
                             </p>
+
+                            {product.category && (
+                              <p className="mt-2 text-[11px] uppercase tracking-[0.22em] text-black/35">
+                                {product.category}
+                              </p>
+                            )}
                           </div>
 
                           <div className="flex gap-4 text-[11px] uppercase tracking-[0.24em]">
@@ -431,6 +491,7 @@ export default function AdminPage() {
                             >
                               Editar
                             </button>
+
                             <button
                               onClick={() => handleDelete(product.id)}
                               className="text-black/50"

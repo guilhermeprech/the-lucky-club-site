@@ -13,12 +13,15 @@ type Product = {
   price: number;
   condition: string;
   imageUrl?: string;
+  category?: string;
 };
 
 async function getProducts(): Promise<Product[]> {
   const { data, error } = await supabase
     .from("Products")
-    .select("Id, Name, Brand, Description, Price, Condition, ImageUrl, CreatedAt")
+    .select(
+      "Id, Name, Brand, Description, Price, Condition, ImageUrl, Category, CreatedAt"
+    )
     .order("CreatedAt", { ascending: false });
 
   if (error) {
@@ -34,6 +37,7 @@ async function getProducts(): Promise<Product[]> {
     price: Number(product.Price ?? 0),
     condition: product.Condition ?? "",
     imageUrl: product.ImageUrl ?? "",
+    category: product.Category ?? "",
   }));
 }
 

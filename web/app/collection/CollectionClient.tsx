@@ -12,6 +12,7 @@ type Product = {
   price: number;
   condition: string;
   imageUrl?: string;
+  category?: string;
 };
 
 export default function CollectionClient({
@@ -20,38 +21,69 @@ export default function CollectionClient({
   products: Product[];
 }) {
   const [search, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
+
+  const categories = useMemo(() => {
+    const uniqueCategories = products
+      .map((product) => product.category)
+      .filter((category): category is string => Boolean(category));
+
+    return ["Todos", ...Array.from(new Set(uniqueCategories))];
+  }, [products]);
 
   const filteredProducts = useMemo(() => {
     const term = search.trim().toLowerCase();
 
-    if (!term) return products;
-
     return products.filter((product) => {
-      return (
+      const matchesSearch =
+        !term ||
         product.name.toLowerCase().includes(term) ||
-        product.brand.toLowerCase().includes(term)
-      );
+        product.brand.toLowerCase().includes(term);
+
+      const matchesCategory =
+        selectedCategory === "Todos" || product.category === selectedCategory;
+
+      return matchesSearch && matchesCategory;
     });
-  }, [products, search]);
+  }, [products, search, selectedCategory]);
 
   return (
     <>
-      <div className="mb-12 max-w-[460px]">
-        <label
-          htmlFor="collection-search"
-          className="mb-3 block text-[10px] uppercase tracking-[0.32em] text-black/40"
-        >
-          Buscar
-        </label>
+      <div className="mb-12 grid gap-6 md:grid-cols-[460px_1fr] md:items-end">
+        <div>
+          <label
+            htmlFor="collection-search"
+            className="mb-3 block text-[10px] uppercase tracking-[0.32em] text-black/40"
+          >
+            Buscar
+          </label>
 
-        <input
-          id="collection-search"
-          type="text"
-          placeholder="Buscar por marca ou peça"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full border border-black/10 bg-transparent px-4 py-3 text-[14px] outline-none placeholder:text-black/35 focus:border-black/30"
-        />
+          <input
+            id="collection-search"
+            type="text"
+            placeholder="Buscar por marca ou peça"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full border border-black/10 bg-transparent px-4 py-3 text-[14px] outline-none placeholder:text-black/35 focus:border-black/30"
+          />
+        </div>
+
+        <div className="flex flex-wrap gap-2 md:justify-end">
+          {categories.map((category) => (
+            <button
+              key={category}
+              type="button"
+              onClick={() => setSelectedCategory(category)}
+              className={`border px-4 py-2 text-[10px] uppercase tracking-[0.24em] transition ${
+                selectedCategory === category
+                  ? "border-black bg-black text-[#f3f1e9]"
+                  : "border-black/10 text-black/55 hover:border-black/30"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
       </div>
 
       {filteredProducts.length === 0 ? (
@@ -93,6 +125,12 @@ export default function CollectionClient({
                 <p className="mt-2 text-[12px] text-black/45">
                   {product.condition}
                 </p>
+
+                {product.category && (
+                  <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-black/35">
+                    {product.category}
+                  </p>
+                )}
               </div>
             </Link>
           ))}

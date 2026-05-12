@@ -88,12 +88,12 @@ export default function Footer() {
           </span>
 
           <a
-            href="https://guilhermerech.com.br"
+            href="https://g9code.com.br"
             target="_blank"
             rel="noreferrer"
             className="hover:text-black transition"
           >
-            Desenvolvimento por Guilherme Rech — Soluções digitais sob medida.
+            Desenvolvimento por G9CODE — Soluções digitais.
           </a>
 
         </div>

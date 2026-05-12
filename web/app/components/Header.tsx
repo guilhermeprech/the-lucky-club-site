@@ -2,48 +2,64 @@
 
 import { useEffect, useState } from "react";
 import { cartUpdatedEvent, getCartCount } from "@/src/lib/cart";
+import { supabase } from "@/src/lib/supabase";
 
 export default function Header() {
   const [cartCount, setCartCount] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const updateCartCount = () => {
       setCartCount(getCartCount());
     };
 
+    const checkSession = async () => {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+
+      setIsLoggedIn(!!session);
+    };
+
     updateCartCount();
+    checkSession();
 
     window.addEventListener("focus", updateCartCount);
     window.addEventListener(cartUpdatedEvent, updateCartCount);
 
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsLoggedIn(!!session);
+    });
+
     return () => {
       window.removeEventListener("focus", updateCartCount);
       window.removeEventListener(cartUpdatedEvent, updateCartCount);
+      listener.subscription.unsubscribe();
     };
   }, []);
+
+  const accountHref = isLoggedIn ? "/account" : "/login";
+  const accountLabel = isLoggedIn ? "Minha conta" : "Entrar";
 
   return (
     <header className="border-b border-black/10">
       <div className="container-editorial relative flex items-center justify-between py-4">
-        {/* MOBILE MENU BUTTON */}
         <button
           type="button"
           onClick={() => setMobileMenuOpen(true)}
-          className="md:hidden text-xl leading-none"
+          className="text-xl leading-none md:hidden"
           aria-label="Abrir menu"
         >
           ☰
         </button>
 
-        {/* DESKTOP NAV */}
         <nav className="hidden items-center gap-6 text-[11px] uppercase tracking-[0.28em] md:flex">
           <a href="/">Início</a>
           <a href="/collection">Coleção</a>
           <a href="/about">Sobre</a>
         </nav>
 
-        {/* LOGO */}
         <a
           href="/"
           className="absolute left-1/2 flex -translate-x-1/2 items-center gap-2 text-[11px] uppercase tracking-[0.42em]"
@@ -56,16 +72,13 @@ export default function Header() {
           <span>The Lucky Club</span>
         </a>
 
-        {/* RIGHT SIDE */}
         <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.28em]">
-          {/* DESKTOP */}
           <div className="hidden items-center gap-6 md:flex">
             <a href="/desapegue">Desapegue</a>
-            <a href="/login">Entrar</a>
+            <a href={accountHref}>{accountLabel}</a>
             <a href="/bag">Sacola ({cartCount})</a>
           </div>
 
-          {/* MOBILE BAG */}
           <a href="/bag" className="relative md:hidden" aria-label="Sacola">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +109,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* MOBILE MENU */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 bg-black/30 md:hidden">
           <div className="absolute left-0 top-0 h-full w-[82%] max-w-[320px] bg-[var(--background)] p-6 shadow-xl">
@@ -116,21 +128,12 @@ export default function Header() {
             </div>
 
             <nav className="flex flex-col gap-6 text-[14px] uppercase tracking-[0.18em] text-black/80">
-              <a href="/" onClick={() => setMobileMenuOpen(false)}>
-                Início
-              </a>
-              <a href="/collection" onClick={() => setMobileMenuOpen(false)}>
-                Coleção
-              </a>
-              <a href="/about" onClick={() => setMobileMenuOpen(false)}>
-                Sobre
-              </a>
-              <a href="/desapegue" onClick={() => setMobileMenuOpen(false)}>
-                Desapegue
-              </a>
-              <a href="/bag" onClick={() => setMobileMenuOpen(false)}>
-                Sacola
-              </a>
+              <a href="/" onClick={() => setMobileMenuOpen(false)}>Início</a>
+              <a href="/collection" onClick={() => setMobileMenuOpen(false)}>Coleção</a>
+              <a href="/about" onClick={() => setMobileMenuOpen(false)}>Sobre</a>
+              <a href="/desapegue" onClick={() => setMobileMenuOpen(false)}>Desapegue</a>
+              <a href={accountHref} onClick={() => setMobileMenuOpen(false)}>{accountLabel}</a>
+              <a href="/bag" onClick={() => setMobileMenuOpen(false)}>Sacola</a>
             </nav>
           </div>
 
