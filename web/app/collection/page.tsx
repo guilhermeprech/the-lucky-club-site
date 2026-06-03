@@ -13,6 +13,7 @@ type Product = {
   price: number;
   condition: string;
   imageUrl?: string;
+  images: string[];
   category?: string;
 };
 
@@ -20,7 +21,7 @@ async function getProducts(): Promise<Product[]> {
   const { data, error } = await supabase
     .from("Products")
     .select(
-      "Id, Name, Brand, Description, Price, Condition, ImageUrl, Category, CreatedAt"
+      "Id, Name, Brand, Description, Price, Condition, ImageUrl, Images, Category, CreatedAt"
     )
     .order("CreatedAt", { ascending: false });
 
@@ -29,16 +30,26 @@ async function getProducts(): Promise<Product[]> {
     return [];
   }
 
-  return (data ?? []).map((product) => ({
-    id: Number(product.Id),
-    name: product.Name ?? "",
-    brand: product.Brand ?? "",
-    description: product.Description ?? "",
-    price: Number(product.Price ?? 0),
-    condition: product.Condition ?? "",
-    imageUrl: product.ImageUrl ?? "",
-    category: product.Category ?? "",
-  }));
+  return (data ?? []).map((product) => {
+    const images =
+      Array.isArray(product.Images) && product.Images.length > 0
+        ? product.Images
+        : product.ImageUrl
+        ? [product.ImageUrl]
+        : [];
+
+    return {
+      id: Number(product.Id),
+      name: product.Name ?? "",
+      brand: product.Brand ?? "",
+      description: product.Description ?? "",
+      price: Number(product.Price ?? 0),
+      condition: product.Condition ?? "",
+      imageUrl: images[0] ?? "",
+      images,
+      category: product.Category ?? "",
+    };
+  });
 }
 
 export default async function CollectionPage() {

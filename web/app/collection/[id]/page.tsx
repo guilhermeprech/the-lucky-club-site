@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import Header from "@/app/components/Header";
 import AddToBagButton from "./AddToBagButton";
+import ProductGallery from "./ProductGallery";
 import { supabase } from "@/src/lib/supabase";
 
 type Product = {
@@ -12,6 +12,7 @@ type Product = {
   price: number;
   condition: string;
   imageUrl?: string;
+  images: string[];
 };
 
 type PageProps = {
@@ -23,13 +24,20 @@ type PageProps = {
 async function getProduct(id: string): Promise<Product | null> {
   const { data, error } = await supabase
     .from("Products")
-    .select("Id, Name, Brand, Description, Price, Condition, ImageUrl")
+    .select("Id, Name, Brand, Description, Price, Condition, ImageUrl, Images")
     .eq("Id", Number(id))
     .single();
 
   if (error || !data) {
     return null;
   }
+
+  const images = Array.from(
+    new Set([
+      ...(data.ImageUrl ? [data.ImageUrl] : []),
+      ...(Array.isArray(data.Images) ? data.Images : []),
+    ])
+  );
 
   return {
     id: data.Id,
@@ -39,6 +47,7 @@ async function getProduct(id: string): Promise<Product | null> {
     price: Number(data.Price ?? 0),
     condition: data.Condition ?? "",
     imageUrl: data.ImageUrl ?? "",
+    images,
   };
 }
 
@@ -71,18 +80,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <Header />
 
       <section className="container-editorial grid gap-4 py-3 md:grid-cols-[0.95fr_0.85fr] md:items-center md:gap-12 md:py-10">
-        <div className="relative h-[280px] overflow-hidden bg-[#e8e3d8] md:h-[620px]">
-          {product.imageUrl ? (
-            <Image
-              src={product.imageUrl}
-              alt={product.name}
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-            />
-          ) : null}
-        </div>
+        <ProductGallery images={product.images} productName={product.name} />
 
         <div className="max-w-[500px] md:self-center">
           <p className="text-[10px] uppercase tracking-[0.28em] text-black/40">

@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import type { Metadata } from "next";
+import MetaPixel from "./components/MetaPixel";
 
 export const metadata: Metadata = {
   title: "The Lucky Club",
@@ -71,6 +72,7 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${perandory.variable} ${vintageGoods.variable}`}
       >
+      <MetaPixel />
         {children}
       </body>
     </html>

@@ -16,6 +16,7 @@ type Product = {
   price: number;
   condition: string;
   imageUrl: string;
+  images: string[];
   category: string;
 };
 
@@ -26,6 +27,7 @@ type ProductForm = {
   price: string;
   condition: string;
   imageUrl: string;
+  images: string[];
   category: string;
 };
 
@@ -36,10 +38,18 @@ const emptyForm: ProductForm = {
   price: "",
   condition: "",
   imageUrl: "",
+  images: [],
   category: "Bolsas",
 };
 
 function formatProduct(product: any): Product {
+  const images =
+    Array.isArray(product.Images) && product.Images.length > 0
+      ? product.Images
+      : product.ImageUrl
+      ? [product.ImageUrl]
+      : [];
+
   return {
     id: product.Id,
     name: product.Name ?? "",
@@ -47,7 +57,8 @@ function formatProduct(product: any): Product {
     description: product.Description ?? "",
     price: Number(product.Price ?? 0),
     condition: product.Condition ?? "",
-    imageUrl: product.ImageUrl ?? "",
+    imageUrl: product.ImageUrl ?? images[0] ?? "",
+    images,
     category: product.Category ?? "",
   };
 }
@@ -68,7 +79,7 @@ export default function AdminPage() {
       const { data, error } = await supabase
         .from("Products")
         .select(
-          "Id, Name, Brand, Description, Price, Condition, ImageUrl, Category, CreatedAt"
+          "Id, Name, Brand, Description, Price, Condition, ImageUrl, Images, Category, CreatedAt"
         )
         .order("CreatedAt", { ascending: false });
 
@@ -116,37 +127,61 @@ export default function AdminPage() {
     }));
   };
 
-  const handleImageUpload = async (file: File) => {
-    setUploading(true);
-    setMessage("");
-
+  const uploadToCloudinary = async (file: File) => {
     const data = new FormData();
     data.append("file", file);
     data.append("upload_preset", "the-lucky-club");
 
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dmuvpzk74/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+
+    if (!res.ok) throw new Error("Erro ao enviar imagem");
+
+    const result = await res.json();
+    return result.secure_url as string;
+  };
+
+  const handleImagesUpload = async (files: FileList) => {
+    setUploading(true);
+    setMessage("");
+
     try {
-      const res = await fetch(
-        "https://api.cloudinary.com/v1_1/dmuvpzk74/image/upload",
-        {
-          method: "POST",
-          body: data,
-        }
+      const uploadedUrls = await Promise.all(
+        Array.from(files).map((file) => uploadToCloudinary(file))
       );
 
-      if (!res.ok) throw new Error("Erro ao enviar imagem");
+      setForm((prev) => {
+        const nextImages = [...prev.images, ...uploadedUrls];
 
-      const result = await res.json();
-
-      setForm((prev) => ({
-        ...prev,
-        imageUrl: result.secure_url,
-      }));
+        return {
+          ...prev,
+          images: nextImages,
+          imageUrl: nextImages[0] ?? "",
+        };
+      });
     } catch (error) {
-      console.error("Erro ao subir imagem:", error);
-      setMessage("Erro ao enviar imagem.");
+      console.error("Erro ao subir imagens:", error);
+      setMessage("Erro ao enviar uma ou mais imagens.");
     } finally {
       setUploading(false);
     }
+  };
+
+  const handleRemoveImage = (imageUrl: string) => {
+    setForm((prev) => {
+      const nextImages = prev.images.filter((image) => image !== imageUrl);
+
+      return {
+        ...prev,
+        images: nextImages,
+        imageUrl: nextImages[0] ?? "",
+      };
+    });
   };
 
   const resetForm = () => {
@@ -156,15 +191,18 @@ export default function AdminPage() {
 
   const handleEdit = (product: Product) => {
     setEditingId(product.id);
+
     setForm({
       name: product.name,
       brand: product.brand,
       description: product.description,
       price: String(product.price),
       condition: product.condition,
-      imageUrl: product.imageUrl || "",
+      imageUrl: product.imageUrl || product.images[0] || "",
+      images: product.images.length > 0 ? product.images : product.imageUrl ? [product.imageUrl] : [],
       category: product.category || "Bolsas",
     });
+
     setMessage("");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -193,13 +231,16 @@ export default function AdminPage() {
     setMessage("");
 
     try {
+      const mainImage = form.images[0] ?? form.imageUrl ?? "";
+
       const payload = {
         Name: form.name,
         Brand: form.brand,
         Description: form.description,
         Price: Number(form.price),
         Condition: form.condition,
-        ImageUrl: form.imageUrl,
+        ImageUrl: mainImage,
+        Images: form.images,
         Category: form.category,
       };
 
@@ -357,15 +398,16 @@ export default function AdminPage() {
 
               <div>
                 <label className="mb-2 block text-[11px] uppercase tracking-[0.24em] text-black/45">
-                  Imagem
+                  Imagens
                 </label>
 
                 <input
                   type="file"
                   accept="image/*"
+                  multiple
                   onChange={(e) => {
-                    if (e.target.files && e.target.files[0]) {
-                      handleImageUpload(e.target.files[0]);
+                    if (e.target.files && e.target.files.length > 0) {
+                      handleImagesUpload(e.target.files);
                     }
                   }}
                   className="w-full border border-black/10 px-4 py-3"
@@ -373,27 +415,42 @@ export default function AdminPage() {
 
                 {uploading && (
                   <p className="mt-2 text-[12px] text-black/50">
-                    Enviando imagem...
+                    Enviando imagens...
                   </p>
                 )}
               </div>
 
-              {form.imageUrl && (
+              {form.images.length > 0 && (
                 <div className="border border-black/10 p-3">
                   <p className="mb-3 text-[10px] uppercase tracking-[0.24em] text-black/40">
-                    Preview
+                    Preview das imagens
                   </p>
 
-                  <div className="aspect-[3/4] overflow-hidden bg-[#e8e3d8]">
-                    <img
-                      src={form.imageUrl}
-                      alt="Preview da peça"
-                      className="h-full w-full object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = "";
-                      }}
-                    />
+                  <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
+                    {form.images.map((image) => (
+                      <div key={image} className="relative">
+                        <div className="aspect-[3/4] overflow-hidden bg-[#e8e3d8]">
+                          <img
+                            src={image}
+                            alt="Preview da peça"
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveImage(image)}
+                          className="mt-2 w-full border border-black/10 px-3 py-2 text-[10px] uppercase tracking-[0.22em] text-black/55"
+                        >
+                          Remover
+                        </button>
+                      </div>
+                    ))}
                   </div>
+
+                  <p className="mt-3 text-[12px] text-black/45">
+                    A primeira imagem será usada como capa da peça.
+                  </p>
                 </div>
               )}
 
@@ -482,6 +539,10 @@ export default function AdminPage() {
                                 {product.category}
                               </p>
                             )}
+
+                            <p className="mt-2 text-[12px] text-black/40">
+                              {product.images.length} imagem(ns)
+                            </p>
                           </div>
 
                           <div className="flex gap-4 text-[11px] uppercase tracking-[0.24em]">
