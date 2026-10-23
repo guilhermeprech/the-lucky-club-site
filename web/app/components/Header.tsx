@@ -40,7 +40,6 @@ export default function Header() {
         <nav className="hidden items-center gap-6 text-[11px] uppercase tracking-[0.28em] md:flex">
           <Link href="/">Início</Link>
           <Link href="/collection">Coleção</Link>
-          <Link href="/about">Sobre</Link>
         </nav>
 
         <Link
@@ -115,7 +114,6 @@ export default function Header() {
             <nav className="flex flex-col gap-6 text-[14px] uppercase tracking-[0.18em] text-black/80">
               <Link href="/" onClick={() => setMobileMenuOpen(false)}>Início</Link>
               <Link href="/collection" onClick={() => setMobileMenuOpen(false)}>Coleção</Link>
-              <Link href="/about" onClick={() => setMobileMenuOpen(false)}>Sobre</Link>
               <Link href="/desapegue" onClick={() => setMobileMenuOpen(false)}>Desapegue</Link>
               <Link href="/bag" onClick={() => setMobileMenuOpen(false)}>Sacola</Link>
             </nav>

@@ -14,7 +14,7 @@ const nextConfig = {
   },
 
   async redirects() {
-    return ["/admin", "/login", "/account"].flatMap((route) => [
+    return ["/admin", "/login", "/account", "/about"].flatMap((route) => [
       { source: route, destination: "/", permanent: false },
       { source: `${route}/:path*`, destination: "/", permanent: false },
     ]);

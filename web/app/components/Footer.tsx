@@ -32,11 +32,6 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/about" className="hover:underline">
-                Sobre
-              </Link>
-            </li>
-            <li>
               <Link href="/desapegue" className="hover:underline">
                 Desapegue
               </Link>
