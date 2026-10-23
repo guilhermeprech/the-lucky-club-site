@@ -1,0 +1,1007 @@
+[
+  {
+    "id": 95,
+    "name": "Double Flap Vintage",
+    "brand": "Chanel",
+    "description": "Ícone atemporal da maison, a Classic Flap em couro matelassê marrom traduz elegância discreta com um toque contemporâneo. O acabamento em ferragens douradas e a alça em corrente entrelaçada elevam a peça, permitindo uso no ombro ou crossbody com naturalidade. Modelo estruturado, com fechamento CC turn-lock e interior espaçoso, ideal para acompanhar do dia à noite com sofisticação. Um investimento clássico que nunca sai de cena. Detalhes: Couro matelassê (losangos) Cor: marrom profundo Ferragens douradas Alça longa em corrente com couro entrelaçado Fechamento por aba com CC turn-lock Interior amplo com divisórias",
+    "price": 30000,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-05-27T19:12:01.865+00:00",
+    "imageUrl": "/images/products/95-0.webp",
+    "images": [
+      "/images/products/95-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/95-0-thumb.webp"
+  },
+  {
+    "id": 94,
+    "name": "Bolsa Python",
+    "brand": "BBag",
+    "description": "Bolsa BBag em python natural, destacada pelos detalhes em couro trançado e ferragens douradas que adicionam sofisticação e personalidade ao modelo. Possui alça de ombro confortável, acabamento refinado e visual marcante, sem perder a versatilidade. Peça em excelente estado de conservação.",
+    "price": 900,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-05-27T19:08:53.737+00:00",
+    "imageUrl": "/images/products/94-0.webp",
+    "images": [
+      "/images/products/94-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/94-0-thumb.webp"
+  },
+  {
+    "id": 93,
+    "name": "Rockstud Crossbody",
+    "brand": "Valentino Garavani",
+    "description": "Bolsa Valentino Garavani Rockstud em couro dourado metalizado, com textura sofisticada, ferragens douradas e as icônicas tachas piramidais aplicadas na aba, laterais e alça. O modelo possui formato compacto, fechamento por aba e alça longa ajustável, podendo ser usado no ombro ou na transversal. Uma peça marcante, elegante e cheia de identidade.",
+    "price": 7750,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-05-20T02:09:25.04+00:00",
+    "imageUrl": "/images/products/93-0.webp",
+    "images": [
+      "/images/products/93-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/93-0-thumb.webp"
+  },
+  {
+    "id": 92,
+    "name": "Óculos",
+    "brand": "Chanel",
+    "description": "Óculos de sol Chanel modelo 4018, com design sem aro, lentes degradê azul e ferragens prateadas. Um modelo super cool, leve e marcante, com estética vintage sofisticada e aquele toque fashion característico da Chanel.",
+    "price": 1100,
+    "condition": "Excelente",
+    "category": "Acessórios",
+    "createdAt": "2026-05-19T16:13:41.204+00:00",
+    "imageUrl": "/images/products/92-0.webp",
+    "images": [
+      "/images/products/92-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/92-0-thumb.webp"
+  },
+  {
+    "id": 91,
+    "name": "Sunset Bag",
+    "brand": "Saint Laurent",
+    "description": "Bolsa Saint Laurent em couro liso nude/rosé, com design estruturado e elegante. O modelo traz o icônico monograma YSL em metal prateado e alça em corrente, combinando sofisticação, versatilidade e um visual atemporal. Peça extremamente conservada, ideal para produções refinadas do dia à noite.",
+    "price": 9800,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-05-19T00:28:48.028+00:00",
+    "imageUrl": "/images/products/91-0.webp",
+    "images": [
+      "/images/products/91-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/91-0-thumb.webp"
+  },
+  {
+    "id": 90,
+    "name": "Borough Bowling",
+    "brand": "Coach",
+    "description": "Bolsa Coach em couro marrom escuro, com design estruturado e silhueta arredondada. Um modelo elegante, discreto e atemporal, perfeito para compor produções sofisticadas com praticidade no dia a dia. Peça extremamente bem conservada.",
+    "price": 3000,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-05-19T00:23:30.936+00:00",
+    "imageUrl": "/images/products/90-0.webp",
+    "images": [
+      "/images/products/90-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/90-0-thumb.webp"
+  },
+  {
+    "id": 89,
+    "name": "Óculos",
+    "brand": "Prada",
+    "description": "Óculos Prada em acetato rosa translúcido, com design geométrico e lentes em tom marrom. Uma peça moderna, cool e feminina, perfeita para adicionar personalidade ao look com o toque sofisticado da marca.",
+    "price": 1700,
+    "condition": "Excelente",
+    "category": "Acessórios",
+    "createdAt": "2026-05-19T00:17:34.578+00:00",
+    "imageUrl": "/images/products/89-0.webp",
+    "images": [
+      "/images/products/89-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/89-0-thumb.webp"
+  },
+  {
+    "id": 88,
+    "name": "Necessaire Logo-Print",
+    "brand": "Dolce & Gabbana",
+    "description": "Necessaire Dolce & Gabbana em canvas monogramado, com estampa da marca em tons neutros e placa metálica frontal.",
+    "price": 1900,
+    "condition": "Ótima",
+    "category": "Acessórios",
+    "createdAt": "2026-05-19T00:15:56.426+00:00",
+    "imageUrl": "/images/products/88-0.webp",
+    "images": [
+      "/images/products/88-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/88-0-thumb.webp"
+  },
+  {
+    "id": 87,
+    "name": "Cinto GG Marmont",
+    "brand": "Gucci",
+    "description": "Cinto Gucci GG Marmont em couro preto, com a clássica fivela Double G em metal dourado envelhecido. Um acessório atemporal, elegante e versátil, perfeito para elevar produções do dia a dia ao look mais sofisticado.",
+    "price": 1800,
+    "condition": "Ótimo",
+    "category": "Acessórios",
+    "createdAt": "2026-05-19T00:13:20.839+00:00",
+    "imageUrl": "/images/products/87-0.webp",
+    "images": [
+      "/images/products/87-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/87-0-thumb.webp"
+  },
+  {
+    "id": 86,
+    "name": "Bolsa Tote Rue St-Guillaume Canvas",
+    "brand": "Karl Lagerfeld",
+    "description": "Bolsa Karl Lagerfeld Rue St-Guillaume Tote confeccionada em canvas de algodão bege, com icônica estampa frontal inspirada no endereço do estúdio da marca em Paris. Modelo amplo, leve e funcional, com interior vermelho contrastante e alças confortáveis para uso no ombro.",
+    "price": 950,
+    "condition": "Ótimo",
+    "category": "Bolsas",
+    "createdAt": "2026-05-17T23:55:44.31+00:00",
+    "imageUrl": "/images/products/86-0.webp",
+    "images": [
+      "/images/products/86-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/86-0-thumb.webp"
+  },
+  {
+    "id": 85,
+    "name": "Carteira CC Long Wallet",
+    "brand": "Chanel",
+    "description": "Modelo clássico da Chanel em couro vermelho matelassê, com ferragens douradas e excelente estrutura. Carteira muito bem conservada, apresentando discretos sinais de uso. Acompanha caixa, dust bag e cartão originais da marca.",
+    "price": 2900,
+    "condition": "Muito bom",
+    "category": "Acessórios",
+    "createdAt": "2026-05-17T23:46:15.376+00:00",
+    "imageUrl": "/images/products/85-0.webp",
+    "images": [
+      "/images/products/85-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/85-0-thumb.webp"
+  },
+  {
+    "id": 84,
+    "name": "Bolsa em Couro Bicolor Orgânica",
+    "brand": "Estilé",
+    "description": "Estilé em couro preto e off white, com design geométrico sofisticado e detalhe frontal orgânico que traz um toque moderno e artístico ao modelo. Estruturada e versátil, possui alça longa ajustável para uso no ombro ou transversal.",
+    "price": 520,
+    "condition": "Muito bom",
+    "category": "Bolsas",
+    "createdAt": "2026-05-15T12:18:48.187+00:00",
+    "imageUrl": "/images/products/84-0.webp",
+    "images": [
+      "/images/products/84-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/84-0-thumb.webp"
+  },
+  {
+    "id": 83,
+    "name": "Sandália Mule Malaga Kid Webby",
+    "brand": "Gucci",
+    "description": "Sandália mule Gucci Malaga Kid Webby em couro vermelho, com acabamento acolchoado e design de tiras cruzadas que trazem um visual sofisticado e fashionista ao modelo. Possui salto grosso elegante e construção refinada, equilibrando modernidade e feminilidade na medida certa. Tamanho 34 Brasil.",
+    "price": 1300,
+    "condition": "Excelente",
+    "category": "Calçados",
+    "createdAt": "2026-05-15T04:12:59.15+00:00",
+    "imageUrl": "/images/products/83-0.webp",
+    "images": [
+      "/images/products/83-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/83-0-thumb.webp"
+  },
+  {
+    "id": 82,
+    "name": "Sandália anabela couro cobre e spikes",
+    "brand": "Gucci",
+    "description": "Sandália anabela de couro cobre da Gucci, com solado em cortiça e detalhes em spikes dourados que adicionam um toque moderno e fashionista ao modelo. Elegante e confortável, possui fechamento delicado no tornozelo e design sofisticado para diferentes ocasiões. Apresenta marcas de uso na região da palmilha, com excelente estado externo. Tamanho 35,5 Brasil.",
+    "price": 550,
+    "condition": "Muito bom",
+    "category": "Calçados",
+    "createdAt": "2026-05-15T04:06:30.306+00:00",
+    "imageUrl": "/images/products/82-0.webp",
+    "images": [
+      "/images/products/82-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/82-0-thumb.webp"
+  },
+  {
+    "id": 81,
+    "name": "Óculos",
+    "brand": "Illesteva",
+    "description": "Illesteva em acetato marmorizado, com design moderno e acabamento sofisticado que traduz perfeitamente a estética cool e refinada da marca. O modelo possui formato arredondado elegante e lentes escuras, criando um visual contemporâneo e extremamente versátil. Em perfeito estado, acompanha case original.",
+    "price": 650,
+    "condition": "Excelente",
+    "category": "Acessórios",
+    "createdAt": "2026-05-15T04:03:08.774+00:00",
+    "imageUrl": "/images/products/81-0.webp",
+    "images": [
+      "/images/products/81-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/81-0-thumb.webp"
+  },
+  {
+    "id": 80,
+    "name": "Pulseira Brasley Archive",
+    "brand": "Louis Vuitton",
+    "description": "Pulseira Louis Vuitton em couro preto, marcada pelo fecho metálico prateado inspirado em algemas, trazendo uma estética moderna e sofisticada ao modelo. Minimalista e elegante, é uma peça versátil que adiciona personalidade às produções do dia a dia. Acompanha caixa original da marca.",
+    "price": 990,
+    "condition": "Ótimo",
+    "category": "Acessórios",
+    "createdAt": "2026-05-15T03:58:09.063+00:00",
+    "imageUrl": "/images/products/80-0.webp",
+    "images": [
+      "/images/products/80-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/80-0-thumb.webp"
+  },
+  {
+    "id": 79,
+    "name": "Rockrunner",
+    "brand": "Valentino Garavani",
+    "description": "Tênis Valentino Garavani Rockrunner com estampa camuflada multicolorida, combinando couro, camurça e diferentes texturas que trazem personalidade e sofisticação ao modelo. O design esportivo e contemporâneo é complementado pelos icônicos studs aplicados no calcanhar, assinatura da linha Rockrunner. Modelo em excelente estado, tendo sido usado pouquíssimas vezes. Tamanho 36 Brasil.",
+    "price": 990,
+    "condition": "Excelente",
+    "category": "Calçados",
+    "createdAt": "2026-05-15T03:50:46.231+00:00",
+    "imageUrl": "/images/products/79-0.webp",
+    "images": [
+      "/images/products/79-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/79-0-thumb.webp"
+  },
+  {
+    "id": 78,
+    "name": "Astaire",
+    "brand": "Bottega Veneta",
+    "description": "Mocassim Bottega Veneta Astaire confeccionado em couro preto, marcado pelo acabamento sofisticado e pela elegante ferragem dourada frontal que traz personalidade ao modelo. Com estética minimalista e contemporânea, é uma peça clássica e versátil para composições refinadas. Muito bem conservado, com levíssimos sinais de uso compatíveis com o uso anterior. Tamanho 34 Brasil.",
+    "price": 4500,
+    "condition": "Muito bom",
+    "category": "Calçados",
+    "createdAt": "2026-05-15T03:05:56.926+00:00",
+    "imageUrl": "/images/products/78-0.webp",
+    "images": [
+      "/images/products/78-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/78-0-thumb.webp"
+  },
+  {
+    "id": 77,
+    "name": "Óculos",
+    "brand": "Bottega Veneta",
+    "description": "Óculos Bottega Veneta com acabamento refinado em metal e detalhes em acetato tartaruga, trazendo sofisticação e personalidade ao modelo. A silhueta moderna e levemente geométrica adiciona um toque fashionista e elegante para diferentes ocasiões. Acompanha case em couro intrecciato e caixa original da marca.",
+    "price": 950,
+    "condition": "Excelente",
+    "category": "Acessórios",
+    "createdAt": "2026-05-15T03:02:31.586+00:00",
+    "imageUrl": "/images/products/77-0.webp",
+    "images": [
+      "/images/products/77-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/77-0-thumb.webp"
+  },
+  {
+    "id": 76,
+    "name": "Óculos",
+    "brand": "Carolina Herrera",
+    "description": "Óculos Carolina Herrera em acetato preto, com estética clássica e sofisticada marcada pelo design oversized e acabamento minimalista. Uma peça versátil e atemporal para diferentes estilos e ocasiões. Em excelente estado de conservação, sem sinais de uso. Acompanha case original.",
+    "price": 985,
+    "condition": "Excelente",
+    "category": "Acessórios",
+    "createdAt": "2026-05-15T02:55:48.856+00:00",
+    "imageUrl": "/images/products/76-0.webp",
+    "images": [
+      "/images/products/76-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/76-0-thumb.webp"
+  },
+  {
+    "id": 75,
+    "name": "Salna Ballet Flats Crystal",
+    "brand": "Sandro",
+    "description": "Sapatilha Sandro em couro preto, marcada pelas aplicações de cristais que criam um visual sofisticado e delicado ao modelo. O design inspirado nas clássicas mary janes traz fechamento por fivela e silhueta elegante e confortável para diferentes ocasiões. Modelo muito bem preservado, apresentando apenas leves marcas de uso.",
+    "price": 1050,
+    "condition": "Muito bom",
+    "category": "Calçados",
+    "createdAt": "2026-05-15T02:53:02.225+00:00",
+    "imageUrl": "/images/products/75-0.webp",
+    "images": [
+      "/images/products/75-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/75-0-thumb.webp"
+  },
+  {
+    "id": 74,
+    "name": "Turenne Monogram",
+    "brand": "Louis Vuitton",
+    "description": "Bolsa Louis Vuitton Turenne Monogram confeccionada no clássico canvas Monogram, com detalhes em couro vachetta e ferragens douradas que reforçam a sofisticação atemporal do modelo. Estrutura elegante e levemente arredondada, perfeita para composições refinadas e versáteis. Possui fechamento superior por zíper, alças duplas de mão e acompanha alça longa removível para uso no ombro ou crossbody. Couro e ferragens em excelente estado de conservação, apresentando apenas sinais sutis e quase imperceptíveis de uso.",
+    "price": 5900,
+    "condition": "Ótimo",
+    "category": "Bolsas",
+    "createdAt": "2026-05-15T02:46:16.899+00:00",
+    "imageUrl": "/images/products/74-0.webp",
+    "images": [
+      "/images/products/74-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/74-0-thumb.webp"
+  },
+  {
+    "id": 73,
+    "name": "Bolsa de Ombro Geométrica",
+    "brand": "Estilé",
+    "description": "Bolsa Estilé em couro rosa texturizado, marcada pelo design geométrico sofisticado e minimalista que traz um toque contemporâneo ao modelo. Estrutura elegante e compacta, perfeita para produções modernas e femininas. Possui alça única de ombro, acabamento refinado e ferragens discretas, unindo personalidade e sofisticação. Peça em excelente estado de conservação, sem marcas de uso.",
+    "price": 650,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-05-15T02:41:52.002+00:00",
+    "imageUrl": "/images/products/73-0.webp",
+    "images": [
+      "/images/products/73-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/73-0-thumb.webp"
+  },
+  {
+    "id": 72,
+    "name": "Studded Ankle Strap Sandals",
+    "brand": "Gucci",
+    "description": "Sandália Gucci, confeccionada em couro preto, combinando design minimalista e sofisticado com a estética marcante dos spikes metálicos dourados e prateados aplicados no calcanhar. O modelo possui tira frontal delicada, fechamento ajustável no tornozelo e elegante salto fino de 13,5 cm, criando uma silhueta feminina e extremamente elegante. Peça em excelente estado de conservação, apresentando apenas leves sinais de uso na sola. Tamanho 36 Brasil.",
+    "price": 1200,
+    "condition": "Excelente",
+    "category": "Calçados",
+    "createdAt": "2026-05-15T02:37:37.332+00:00",
+    "imageUrl": "/images/products/72-0.webp",
+    "images": [
+      "/images/products/72-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/72-0-thumb.webp"
+  },
+  {
+    "id": 71,
+    "name": "Sadle Tube",
+    "brand": "Saint Laurent",
+    "description": "Bolsa YSL Sadle Tube em couro preto e ferragem dourada frontal com o clássico monograma da maison. O design tubular traz uma estética contemporânea e sofisticada, equilibrando elegância e modernidade. Possui fechamento superior por zíper e alça de ombro com detalhes em corrente dourada. Peça nova, nunca utilizada, ainda com etiqueta e adesivos de proteção nas ferragens.",
+    "price": 5900,
+    "condition": "Novo",
+    "category": "Bolsas",
+    "createdAt": "2026-05-15T02:35:07.406+00:00",
+    "imageUrl": "/images/products/71-0.webp",
+    "images": [
+      "/images/products/71-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/71-0-thumb.webp"
+  },
+  {
+    "id": 70,
+    "name": "Ace GG Supreme",
+    "brand": "Gucci",
+    "description": "Tênis Gucci Ace GG Supreme, com estampa clássica da marca em canvas GG Supreme e detalhes em couro vermelho e azul, trazendo identidade e sofisticação ao modelo. Modelo versátil, atemporal e confortável, perfeito para composições casuais com toque fashion. Tênis pre-owned em muito bom estado, com sinais sutis naturais de uso. Tamanho 38 Brasil.",
+    "price": 2750,
+    "condition": "Muito bom",
+    "category": "Calçados",
+    "createdAt": "2026-05-15T02:33:23.897+00:00",
+    "imageUrl": "/images/products/70-0.webp",
+    "images": [
+      "/images/products/70-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/70-0-thumb.webp"
+  },
+  {
+    "id": 69,
+    "name": "One Stud Pink",
+    "brand": "Valentino Garavani",
+    "description": "Sandália Valentino Garavani modelo One Stud confeccionado em verniz pink, combinando linhas minimalistas com a icônica aplicação piramidal frontal, símbolo da coleção. Possui salto bloco sofisticado, bico quadrado e fechamento delicado no tornozelo, perfeito para produções elegantes e contemporâneas. Muito bem conservado externamente, com desgaste apenas na parte interna. Tamanho 36 Brasil.",
+    "price": 2200,
+    "condition": "Bom",
+    "category": "Calçados",
+    "createdAt": "2026-05-15T02:21:17.683+00:00",
+    "imageUrl": "/images/products/69-0.webp",
+    "images": [
+      "/images/products/69-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/69-0-thumb.webp"
+  },
+  {
+    "id": 68,
+    "name": "Tabby 26 Shoulder Bag",
+    "brand": "Coach",
+    "description": "Bolsa Coach modelo Tabby 26, confeccionada em couro preto, com design estruturado e elegante, marcada pelas ferragens douradas e pelo acabamento acolchoado que traz sofisticação ao modelo. Espaçosa e funcional, conta com alça de corrente entrelaçada, permitindo uso no ombro ou crossbody. Em estado excelente, quase sem sinais de uso.",
+    "price": 3100,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-05-15T02:17:27.453+00:00",
+    "imageUrl": "/images/products/68-0.webp",
+    "images": [
+      "/images/products/68-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/68-0-thumb.webp"
+  },
+  {
+    "id": 67,
+    "name": "Commercial Raffia Tote Bag",
+    "brand": "Off-White",
+    "description": "Despojada e sofisticada, a Off-White Commercial Raffia Tote Bag é confeccionada em ráfia bege, com alças em couro preto e logo frontal da marca. Espaçosa e leve, é uma peça versátil para composições modernas, especialmente em produções de verão e resort wear.\nDetalhes: ráfia bege, alças duplas em couro preto, logo Off-White frontal, modelo tote, amplo espaço interno e acabamento casual sofisticado.",
+    "price": 1590,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-05-15T01:20:41.238+00:00",
+    "imageUrl": "/images/products/67-0.webp",
+    "images": [
+      "/images/products/67-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/67-0-thumb.webp"
+  },
+  {
+    "id": 66,
+    "name": "Interlocking G Shoulder Bag",
+    "brand": "Gucci",
+    "description": "Clássica e elegante, a Gucci Interlocking G Shoulder Bag traz o icônico fecho GG frontal como destaque. Em couro texturizado cinza, possui estrutura refinada, alça em corrente dourada e design versátil para usar do dia à noite.\nDetalhes: couro texturizado cinza, ferragens douradas, fecho frontal Interlocking G, alça de ombro em corrente, fechamento por aba e compartimentos internos.",
+    "price": 5690,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-05-15T01:17:29.473+00:00",
+    "imageUrl": "/images/products/66-0.webp",
+    "images": [
+      "/images/products/66-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/66-0-thumb.webp"
+  },
+  {
+    "id": 65,
+    "name": "Trim Tee",
+    "brand": "Courrèges",
+    "description": "Camiseta Courrèges em malha branca com acabamento contrastante preto na gola, trazendo a estética minimalista e moderna característica da marca francesa. O modelo possui caimento ajustado ao corpo e detalhe do logo aplicado no busto, adicionando um toque sofisticado e cool à peça.\nVersátil e atemporal, é perfeita para composições casuais com mood effortless chic, funcionando facilmente do look básico ao styling mais fashionista.",
+    "price": 1250,
+    "condition": "Excelente",
+    "category": "Acessórios",
+    "createdAt": "2026-05-12T19:39:45.001+00:00",
+    "imageUrl": "/images/products/65-0.webp",
+    "images": [
+      "/images/products/65-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/65-0-thumb.webp"
+  },
+  {
+    "id": 64,
+    "name": "Salto Camellia",
+    "brand": "Chanel",
+    "description": "Sapato Chanel em couro preto, com design elegante e atemporal marcado pela icônica aplicação de camélia frontal, assinatura clássica da maison francesa. O modelo combina feminilidade e sofisticação em uma silhueta versátil e refinada.\nPossui salto baixo confortável, acabamento em couro macio e interior matelassado, proporcionando elegância e praticidade. Tamanho 38,5 Brasil.",
+    "price": 4800,
+    "condition": "Excelente",
+    "category": "Calçados",
+    "createdAt": "2026-05-12T19:27:00.404+00:00",
+    "imageUrl": "/images/products/64-0.webp",
+    "images": [
+      "/images/products/64-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/64-0-thumb.webp"
+  },
+  {
+    "id": 63,
+    "name": "Madame Loafers",
+    "brand": "Bottega Veneta",
+    "description": "Mocassim Bottega Veneta em couro envernizado off white, com acabamento sofisticado e design contemporâneo. O destaque fica por conta do detalhe Horsebit dourado frontal, que adiciona personalidade e um toque fashion ao modelo.\nPossui construção estruturada, solado confortável e shape atemporal, perfeito para elevar produções casuais ou composições mais refinadas. Tamanho 36 Brasil.",
+    "price": 1800,
+    "condition": "Ótimo",
+    "category": "Calçados",
+    "createdAt": "2026-05-12T19:24:34.929+00:00",
+    "imageUrl": "/images/products/63-0.webp",
+    "images": [
+      "/images/products/63-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/63-0-thumb.webp"
+  },
+  {
+    "id": 62,
+    "name": "Leather Tote Bag",
+    "brand": "Miu Miu",
+    "description": "Bolsa Miu Miu em couro vinho com acabamento macio e design minimalista, perfeita para quem busca uma peça sofisticada e funcional para o dia a dia. O modelo tote traz um visual atemporal com toque contemporâneo, além de excelente espaço interno.\nPossui alças longas de ombro, fechamento superior e bolso frontal externo com zíper, ideal para manter itens essenciais sempre à mão. Uma peça versátil que transita facilmente entre produções casuais e elegantes.",
+    "price": 4900,
+    "condition": "Ótimo",
+    "category": "Bolsas",
+    "createdAt": "2026-05-12T19:13:25.557+00:00",
+    "imageUrl": "/images/products/62-0.webp",
+    "images": [
+      "/images/products/62-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/62-0-thumb.webp"
+  },
+  {
+    "id": 61,
+    "name": "Lou Camera Bag",
+    "brand": "Saint Laurent",
+    "description": "Bolsa Saint Laurent em couro preto matelassado com acabamento chevron e ferragens douradas. O icônico monograma YSL frontal adiciona um toque sofisticado e atemporal ao modelo, enquanto a silhueta compacta garante praticidade para o dia a dia e viagens.\nPossui fechamento em zíper, alça longa ajustável para uso crossbody ou no ombro e detalhe em tassel de couro, assinatura clássica da linha Lou. Interior espaçoso na medida certa para acomodar os essenciais com elegância.",
+    "price": 7900,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-05-12T19:10:08.951+00:00",
+    "imageUrl": "/images/products/61-0.webp",
+    "images": [
+      "/images/products/61-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/61-0-thumb.webp"
+  },
+  {
+    "id": 60,
+    "name": "Rockstud Crossbody Bag",
+    "brand": "Valentino",
+    "description": "Bolsa Valentino Garavani em couro preto, adornada pelos icônicos studs dourados Rockstud que trazem um contraste sofisticado e marcante ao design. Compacta e elegante, é o tipo de peça que transforma produções básicas em looks mais fashionistas e atemporais.\nPossui fechamento em zíper, ferragens douradas e alça longa em corrente para uso no ombro ou crossbody. Interior funcional, ideal para carregar os essenciais com praticidade e muito estilo.",
+    "price": 4050,
+    "condition": "Ótimo",
+    "category": "Bolsas",
+    "createdAt": "2026-05-12T19:06:06.252+00:00",
+    "imageUrl": "/images/products/60-0.webp",
+    "images": [
+      "/images/products/60-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/60-0-thumb.webp"
+  },
+  {
+    "id": 59,
+    "name": "Bambino Long Bag",
+    "brand": "Jacquemus",
+    "description": "Bolsa Jacquemus em couro preto com acabamento glossy e design estruturado, marcada pelo icônico detalhe metálico dourado frontal que traz personalidade e sofisticação ao modelo. Silhueta alongada e minimalista, perfeita para produções elegantes e contemporâneas.\nPossui fechamento por aba, ferragens douradas e acompanha 2 alças: uma de mão e outra longa ajustável para uso no ombro ou crossbody, unindo estilo e versatilidade na medida certa.",
+    "price": 5900,
+    "condition": "Ótima",
+    "category": "Bolsas",
+    "createdAt": "2026-05-12T19:01:40.958+00:00",
+    "imageUrl": "/images/products/59-0.webp",
+    "images": [
+      "/images/products/59-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/59-0-thumb.webp"
+  },
+  {
+    "id": 58,
+    "name": "Bucket Bag",
+    "brand": "Prada",
+    "description": "Bolsa Prada em couro Vitello Daino verde escuro, com acabamento texturizado e ferragens douradas. O modelo bucket combina elegância atemporal com um design minimalista e sofisticado, perfeito para acompanhar produções do dia a dia ou ocasiões especiais.\nPossui fechamento ajustável por cordão e acompanha 2 alças: uma de ombro e outra longa para uso crossbody, trazendo versatilidade para diferentes formas de uso. Interior espaçoso e acabamento impecável característicos da maison italiana.",
+    "price": 7900,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-05-12T18:56:13.658+00:00",
+    "imageUrl": "/images/products/58-0.webp",
+    "images": [
+      "/images/products/58-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/58-0-thumb.webp"
+  },
+  {
+    "id": 49,
+    "name": "Palermo GM",
+    "brand": "Louis Vuitton",
+    "description": "Bolsa Louis Vuitton Palermo GM, modelo amplo e versátil em Monogram Canvas. Apresenta excelente conservação geral, com sinais sutis de uso nas alças. Canvas preservado e ferragens intactas.",
+    "price": 4700,
+    "condition": "Ótima",
+    "category": "Bolsas",
+    "createdAt": "2026-05-07T14:07:08.83437+00:00",
+    "imageUrl": "/images/products/49-0.webp",
+    "images": [
+      "/images/products/49-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/49-0-thumb.webp"
+  },
+  {
+    "id": 48,
+    "name": "Sandália Wedge Plataforma",
+    "brand": "Louis Vuitton",
+    "description": "Sandália LV em couro bicolor, com combinação sofisticada de vinho e off-white. Possui salto anabela, plataforma e fechamento ajustável no tornozelo. Peça moderna, confortável e marcante. Apresenta apenas sutis desgastes. Tamanho 36 Brasil.",
+    "price": 950,
+    "condition": "Ótima",
+    "category": "Calçados",
+    "createdAt": "2026-05-07T14:03:51.834573+00:00",
+    "imageUrl": "/images/products/48-0.webp",
+    "images": [
+      "/images/products/48-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/48-0-thumb.webp"
+  },
+  {
+    "id": 47,
+    "name": "Sandália Tribute",
+    "brand": "Saint Laurent",
+    "description": "Sandália Yves Saint Laurent modelo Tribute, ícone da marca, em couro preto envernizado. Possui tiras entrelaçadas, salto fino e fechamento no tornozelo. Peça com leves sinais de uso.",
+    "price": 1380,
+    "condition": "Bom",
+    "category": "Calçados",
+    "createdAt": "2026-05-07T13:57:32.840014+00:00",
+    "imageUrl": "/images/products/47-0.webp",
+    "images": [
+      "/images/products/47-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/47-0-thumb.webp"
+  },
+  {
+    "id": 45,
+    "name": "Bota Anja",
+    "brand": "Paris Texas",
+    "description": "Modelo statement em couro marrom com efeito croco, trazendo o DNA moderno da Paris Texas. Bico fino e salto bloco 70mm para uma proposta elegante e atual.",
+    "price": 5400,
+    "condition": "Excelente",
+    "category": "Calçados",
+    "createdAt": "2026-05-07T13:51:08.120983+00:00",
+    "imageUrl": "/images/products/45-0.webp",
+    "images": [
+      "/images/products/45-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/45-0-thumb.webp"
+  },
+  {
+    "id": 43,
+    "name": "Woody Tote Canvas",
+    "brand": "Chloé",
+    "description": "A Woody Tote traduz o casual chic da Chloé com leveza e identidade. Em canvas estruturado, com as icônicas alças estampadas com o logo, é a peça perfeita para uma rotina elegante e descomplicada.\nEspaçosa e prática, acomoda tudo com facilidade — do dia a dia ao travel look — sem abrir mão de estilo.\nDetalhes:\nCanvas resistente\nCor: bege com detalhes em marrom\nAlças com logo Chloé\nDesign estruturado\nInterior amplo",
+    "price": 3250,
+    "condition": "Ótima",
+    "category": "Bolsas",
+    "createdAt": "2026-05-05T19:21:14.697715+00:00",
+    "imageUrl": "/images/products/43-0.webp",
+    "images": [
+      "/images/products/43-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/43-0-thumb.webp"
+  },
+  {
+    "id": 42,
+    "name": "Vlogo Bag Large",
+    "brand": "Valentino",
+    "description": "Elegante e atemporal, a VLogo em couro preto é daquelas peças que elevam qualquer produção com facilidade. O design estruturado, combinado à ferragem dourada icônica, traz sofisticação na medida certa — do dia à noite.\nVersátil, pode ser usada na mão pela alça superior ou no ombro/crossbody com a alça longa removível, se adaptando a diferentes ocasiões.\nDetalhes:\nCouro liso\nCor: preto\nFerragens douradas (VLogo)\nAlça de mão estruturada\nAlça longa para uso crossbody\nFechamento por aba\nInterior compacto e funcional",
+    "price": 9500,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-05-05T19:17:24.459019+00:00",
+    "imageUrl": "/images/products/42-0.webp",
+    "images": [
+      "/images/products/42-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/42-0-thumb.webp"
+  },
+  {
+    "id": 41,
+    "name": "Locò Micro Bag",
+    "brand": "Valentino Garavani",
+    "description": "Statement piece na medida certa: a Micro Locò Bag em tom pink vibrante traz personalidade imediata ao look. Confeccionada em couro macio, com o icônico logo V em ferragem dourada, une sofisticação e atitude em um design compacto e versátil.\nA alça em corrente permite uso no ombro ou crossbody, perfeita para produções do dia à noite com um toque fashion e moderno.\nDetalhes:\nCouro liso\nCor: pink intenso\nFerragens douradas (VLogo)\nAlça longa em corrente\nFechamento por aba com botão magnético\nInterior compacto para essenciais",
+    "price": 5100,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-05-05T19:09:45.490741+00:00",
+    "imageUrl": "/images/products/41-0.webp",
+    "images": [
+      "/images/products/41-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/41-0-thumb.webp"
+  },
+  {
+    "id": 37,
+    "name": "Mara Crossbody Bag",
+    "brand": "Chloé",
+    "description": "Bolsa em couro azul com design estruturado e assinatura icônica do aro metálico frontal. Elegante e contemporânea, com ferragens douradas e alça ajustável. Perfeita para elevar produções do dia à noite.",
+    "price": 3200,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-05-04T18:52:52.77372+00:00",
+    "imageUrl": "/images/products/37-0.webp",
+    "images": [
+      "/images/products/37-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/37-0-thumb.webp"
+  },
+  {
+    "id": 36,
+    "name": "NeoNoé Monogram",
+    "brand": "Louis Vuitton",
+    "description": "Bucket icônica em canvas Monogram com fechamento em cordão e alça ajustável. Estrutura elegante, prática e atemporal, o equilíbrio perfeito entre casual e sofisticado.",
+    "price": 10800,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-05-04T18:32:25.474861+00:00",
+    "imageUrl": "/images/products/36-0.webp",
+    "images": [
+      "/images/products/36-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/36-0-thumb.webp"
+  },
+  {
+    "id": 35,
+    "name": "Puzzle Bag Shoulder",
+    "brand": "Loewe",
+    "description": "Ícone da marca, com design geométrico em couro azul sofisticado. Alça ajustável, fechamento em zíper e ferragens douradas. Moderna, versátil e atemporal.",
+    "price": 4500,
+    "condition": "Ótimo",
+    "category": "Bolsas",
+    "createdAt": "2026-05-04T18:28:12.707983+00:00",
+    "imageUrl": "/images/products/35-0.webp",
+    "images": [
+      "/images/products/35-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/35-0-thumb.webp"
+  },
+  {
+    "id": 34,
+    "name": "Gancini Shoulder Bag",
+    "brand": "Salvatore Ferragamo",
+    "description": "Bolsa em couro cinza com fecho Gancini e alças em corrente dourada. Clássica, elegante e fácil de usar no dia a dia.",
+    "price": 2900,
+    "condition": "Regular",
+    "category": "Bolsas",
+    "createdAt": "2026-05-04T18:14:15.671243+00:00",
+    "imageUrl": "/images/products/34-0.webp",
+    "images": [
+      "/images/products/34-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/34-0-thumb.webp"
+  },
+  {
+    "id": 33,
+    "name": "Bracelete Clic H",
+    "brand": "Hèrmes",
+    "description": "Bracelete Clic H em acabamento dourado com esmaltação em tom laranja vibrante, cor clássica da marca. Design Icônico e atemporal.",
+    "price": 3800,
+    "condition": "Excelente",
+    "category": "Acessórios",
+    "createdAt": "2026-05-04T18:09:19.037647+00:00",
+    "imageUrl": "/images/products/33-0.webp",
+    "images": [
+      "/images/products/33-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/33-0-thumb.webp"
+  },
+  {
+    "id": 32,
+    "name": "Óculos",
+    "brand": "Miu Miu",
+    "description": "Óculos Miu Miu com armação tartaruga e lentes em tom marrom degradê. Modelo sofisticado, em perfeito estado de conservação. Acompanha case original.Óculos Miu Miu com armação tartaruga e lentes em tom marrom degradê. Modelo sofisticado, em perfeito estado de conservação. Acompanha case original.",
+    "price": 1590,
+    "condition": "Excelente",
+    "category": "Acessórios",
+    "createdAt": "2026-04-29T02:55:53.435827+00:00",
+    "imageUrl": "/images/products/32-0.webp",
+    "images": [
+      "/images/products/32-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/32-0-thumb.webp"
+  },
+  {
+    "id": 31,
+    "name": "Carteira GG Marmont – Canvas",
+    "brand": "Gucci",
+    "description": "Compacta e elegante, a carteira GG Marmont combina o icônico monograma da Gucci em canvas com acabamento em couro preto. O detalhe do logo Double G em ferragem dourada adiciona sofisticação imediata à peça.\nPerfeita para o dia a dia, une funcionalidade e estilo em um formato prático, ideal para organizar cartões e dinheiro com charme discreto.\nDetalhes:\nCanvas GG monogram\nAcabamento em couro preto\nFerragem dourada Double G\nFormato compacto\nCompartimentos internos para cartões e notas",
+    "price": 1490,
+    "condition": "Excelente",
+    "category": "Acessórios",
+    "createdAt": "2026-04-29T02:47:45.005193+00:00",
+    "imageUrl": "/images/products/31-0.webp",
+    "images": [
+      "/images/products/31-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/31-0-thumb.webp"
+  },
+  {
+    "id": 30,
+    "name": "Tênis Portofino – White & Gold",
+    "brand": "Dolce & Gabanna",
+    "description": "Clássico com atitude, o Portofino da Dolce & Gabbana combina o minimalismo do couro branco com detalhes marcantes em preto e acabamento metalizado dourado no calcanhar. O logo aplicado reforça a identidade da marca, enquanto o design versátil transita facilmente do casual ao sofisticado.\nDetalhes:\nCouro branco\nDetalhes em preto e dourado metalizado\nLogo Dolce & Gabbana aplicado\nFechamento por cadarço\nTamanho 46 Brasil.",
+    "price": 1980,
+    "condition": "Ótimo",
+    "category": "Calçados",
+    "createdAt": "2026-04-29T02:45:24.422839+00:00",
+    "imageUrl": "/images/products/30-0.webp",
+    "images": [
+      "/images/products/30-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/30-0-thumb.webp"
+  },
+  {
+    "id": 29,
+    "name": "Bolsa Louis Vuitton Pochette Accessoires Monogram Empreinte Preta",
+    "brand": "Louis Vuitton",
+    "description": "Bolsa Louis Vuitton modelo Pochette Accessoires, confeccionada em couro Monogram Empreinte na cor preta, com o clássico monograma da maison em relevo. Possui formato retangular compacto, fechamento por aba frontal e alça em corrente dourada, trazendo um contraste elegante e sofisticado.\nDetalhes:\nCouro Monogram Empreinte preto\nFerragens douradas\nAlça de corrente\nModelo compacto de ombro\nDesign clássico e elegante",
+    "price": 9800,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-04-29T02:44:19.946744+00:00",
+    "imageUrl": "/images/products/29-0.webp",
+    "images": [
+      "/images/products/29-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/29-0-thumb.webp"
+  },
+  {
+    "id": 28,
+    "name": "Slide GG Canvas",
+    "brand": "Gucci",
+    "description": "Casual com assinatura de luxo, o slide GG Canvas da Gucci é a escolha perfeita para produções descomplicadas, sem abrir mão de estilo. O icônico monograma em canvas bege com marrom traz identidade imediata, enquanto o design slip-on garante praticidade no dia a dia.\nConfortável e versátil, transita do look urbano ao resort com facilidade — um essencial cool para todas as estações.\nDetalhes:\nCanvas GG monogram\nCor: bege com marrom\nTira única larga\nSolado flat confortável\nModelo slip-on\nTamanho 46 Brasil.",
+    "price": 3350,
+    "condition": "Excelente",
+    "category": "Calçados",
+    "createdAt": "2026-04-29T02:43:20.68221+00:00",
+    "imageUrl": "/images/products/28-0.webp",
+    "images": [
+      "/images/products/28-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/28-0-thumb.webp"
+  },
+  {
+    "id": 27,
+    "name": "Tênis Yeezy Boost 350 V2 Zebra",
+    "brand": "Adidas",
+    "description": "Tênis Adidas Yeezy Boost 350 V2 no icônico colorway Zebra, com cabedal em Primeknit branco e preto, detalhe lateral em vermelho e solado translúcido com tecnologia Boost. Um modelo statement, confortável e super desejado, perfeito para compor looks urbanos com personalidade. Tamanho 38 Brasil.",
+    "price": 1600,
+    "condition": "Bom",
+    "category": "Calçados",
+    "createdAt": "2026-04-29T02:37:48.9737+00:00",
+    "imageUrl": "/images/products/27-0.webp",
+    "images": [
+      "/images/products/27-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/27-0-thumb.webp"
+  },
+  {
+    "id": 26,
+    "name": "Bolsa Totally Damier Azur",
+    "brand": "Louis Vuitton",
+    "description": "Bolsa Louis Vuitton modelo Totally, confeccionada em canvas Damier Azur, um dos padrões mais clássicos e leves da maison. Possui acabamento em couro vachetta caramelo, ferragens douradas e alças duplas alongadas, ideais para uso no ombro com conforto.\nDetalhes:\nCanvas Damier Azur\nAcabamento em couro vachetta\nFerragens douradas\nAlças duplas de ombro\nFechamento superior em zíper\nBolsos laterais externos\nModelo espaçoso e funcional\nIdeal para uso diário",
+    "price": 4200,
+    "condition": "Bom",
+    "category": "Bolsas",
+    "createdAt": "2026-04-29T02:36:36.840111+00:00",
+    "imageUrl": "/images/products/26-0.webp",
+    "images": [
+      "/images/products/26-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/26-0-thumb.webp"
+  },
+  {
+    "id": 25,
+    "name": "Sandália Tribute Platform – Red",
+    "brand": "Saint Laurent",
+    "description": "Icônica e irresistível, a Tribute Platform da Saint Laurent é sinônimo de poder e feminilidade. Em camurça vermelha, o modelo combina tiras entrelaçadas com plataforma frontal e salto alto fino, criando uma silhueta marcante e elegante.\nO fechamento com fivela no tornozelo garante segurança, enquanto o design eleva qualquer produção — perfeita para ocasiões especiais ou para dar destaque absoluto ao look.\nDetalhes:\nCamurça\nCor: vermelho intenso\nTiras frontais entrelaçadas\nPlataforma frontal\nSalto alto fino\nFechamento com fivela no tornozelo",
+    "price": 2500,
+    "condition": "Excelente",
+    "category": "Calçados",
+    "createdAt": "2026-04-29T02:35:05.971435+00:00",
+    "imageUrl": "/images/products/25-0.webp",
+    "images": [
+      "/images/products/25-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/25-0-thumb.webp"
+  },
+  {
+    "id": 24,
+    "name": "Bolsa Félicie Pochette – Monogram Empreinte Bicolor",
+    "brand": "Louis Vuitton",
+    "description": "Delicada e versátil, a Félicie Pochette da Louis Vuitton surge em uma releitura moderna do clássico monograma, com efeito bicolor em tons suaves. Compacta e elegante, é perfeita para quem busca praticidade sem abrir mão de sofisticação.\nAcompanha alça em corrente dourada, permitindo uso no ombro ou crossbody, além de poder ser usada como clutch — ideal do dia à noite.\nDetalhes:\nCouro com estampa monogram\nTons claros com detalhes em bege/rosé\nFerragens douradas\nAlça longa em corrente (removível)\nFechamento por botão de pressão\nInterior compacto e funcional",
+    "price": 6900,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-04-29T01:34:29.185023+00:00",
+    "imageUrl": "/images/products/24-0.webp",
+    "images": [
+      "/images/products/24-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/24-0-thumb.webp"
+  },
+  {
+    "id": 23,
+    "name": "Moonrock Plumetis",
+    "brand": "Zadig & Voltaire",
+    "description": "Modelo moderno em couro preto com aplicação de micro cristais. Acompanha três opções de alça, permitindo diferentes formas de uso. Peça nova, com etiqueta.",
+    "price": 2850,
+    "condition": "Novo",
+    "category": "Bolsas",
+    "createdAt": "2026-04-29T01:25:08.381428+00:00",
+    "imageUrl": "/images/products/23-0.webp",
+    "images": [
+      "/images/products/23-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/23-0-thumb.webp"
+  },
+  {
+    "id": 22,
+    "name": "VLogo Wallet on Chain",
+    "brand": "Valentino",
+    "description": "Bolsa em couro pink envernizado, alça em metal rosa e o icônico VLogo frontal.\nAcompanha caixa, dust bag e cards.",
+    "price": 8500,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-04-29T01:16:01.571262+00:00",
+    "imageUrl": "/images/products/22-0.webp",
+    "images": [
+      "/images/products/22-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/22-0-thumb.webp"
+  },
+  {
+    "id": 21,
+    "name": "Moonrock",
+    "brand": "Zadig & Voltaire",
+    "description": "Bolsa em couro preto e marinho, com studs e ferragens prateadas. Acompanha três opções de alça, permitindo diferentes formas de uso.\nPeça nova, com etiqueta.",
+    "price": 2750,
+    "condition": "Novo",
+    "category": "Bolsas",
+    "createdAt": "2026-04-29T00:43:26.966139+00:00",
+    "imageUrl": "/images/products/21-0.webp",
+    "images": [
+      "/images/products/21-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/21-0-thumb.webp"
+  },
+  {
+    "id": 20,
+    "name": "Bree Camera Bag",
+    "brand": "Gucci",
+    "description": "Bolsa em couro rosé, ferragens douradas e alça longa. Peça muito bem conservada, com leves marcas de uso, discretas. Acompanha dust bag.",
+    "price": 3500,
+    "condition": "Ótimo",
+    "category": "Bolsas",
+    "createdAt": "2026-04-28T23:58:16.027403+00:00",
+    "imageUrl": "/images/products/20-0.webp",
+    "images": [
+      "/images/products/20-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/20-0-thumb.webp"
+  },
+  {
+    "id": 19,
+    "name": "Shoulder Destroyed Denim",
+    "brand": "Diesel",
+    "description": "Bolsa Diesel em denim com acabamento destroyed e fios aparentes, trazendo uma estética edgy e super contemporânea.",
+    "price": 1499.97,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-04-28T19:07:31.618324+00:00",
+    "imageUrl": "/images/products/19-0.webp",
+    "images": [
+      "/images/products/19-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/19-0-thumb.webp"
+  },
+  {
+    "id": 18,
+    "name": "Denim Shoulder Bag",
+    "brand": "Diesel",
+    "description": "Bolsa Diesel em denim, com aplicações de micro cristais, trazendo brilho na medida certa e identidade marcante.",
+    "price": 2200,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-04-28T19:03:14.817198+00:00",
+    "imageUrl": "/images/products/18-0.webp",
+    "images": [
+      "/images/products/18-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/18-0-thumb.webp"
+  },
+  {
+    "id": 16,
+    "name": "Kate Tassel Clutch",
+    "brand": "Saint Laurent",
+    "description": "Bolsa em camurça preta, com ferragem dourada, trazendo o clássico monograma YSL.\nAcompanha dust bag.",
+    "price": 9200,
+    "condition": "Excelente",
+    "category": "Bolsas",
+    "createdAt": "2026-04-28T18:52:23.528896+00:00",
+    "imageUrl": "/images/products/16-0.webp",
+    "images": [
+      "/images/products/16-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/16-0-thumb.webp"
+  },
+  {
+    "id": 8,
+    "name": "Rasteirinha Rockstud",
+    "brand": "Valentino Garavani",
+    "description": "Rasteira em couro rosa pink com as taxas clássicas da marca. Muito bem conservada, com levíssimos sinais de uso compatíveis com o uso anterior.  Tamanho 38 Brasil.",
+    "price": 1750,
+    "condition": "Ótima",
+    "category": "Calçados",
+    "createdAt": "2026-03-24T14:04:25.220535+00:00",
+    "imageUrl": "/images/products/8-0.webp",
+    "images": [
+      "/images/products/8-0.webp"
+    ],
+    "thumbnailUrl": "/images/products/8-0-thumb.webp"
+  }
+]

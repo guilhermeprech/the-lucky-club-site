@@ -1,5 +1,16 @@
 {
-  "dependencies": {
-    "@supabase/supabase-js": "^2.105.3"
+  "name": "the-lucky-club-site",
+  "private": true,
+  "description": "Atalhos para rodar o app Next.js em ./web a partir da raiz. Sem dependências próprias.",
+  "scripts": {
+    "postinstall": "npm --prefix web install",
+    "dev": "npm --prefix web run dev --",
+    "build": "npm --prefix web run build --",
+    "start": "npm --prefix web run start --",
+    "lint": "npm --prefix web run lint --",
+    "typecheck": "npm --prefix web run typecheck"
+  },
+  "engines": {
+    "node": "24.x"
   }
 }

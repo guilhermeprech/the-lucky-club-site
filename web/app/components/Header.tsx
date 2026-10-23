@@ -1,46 +1,29 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { cartUpdatedEvent, getCartCount } from "@/src/lib/cart";
-import { supabase } from "@/src/lib/supabase";
 
 export default function Header() {
   const [cartCount, setCartCount] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     const updateCartCount = () => {
       setCartCount(getCartCount());
     };
 
-    const checkSession = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-
-      setIsLoggedIn(!!session);
-    };
-
     updateCartCount();
-    checkSession();
 
     window.addEventListener("focus", updateCartCount);
     window.addEventListener(cartUpdatedEvent, updateCartCount);
 
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
-      setIsLoggedIn(!!session);
-    });
-
     return () => {
       window.removeEventListener("focus", updateCartCount);
       window.removeEventListener(cartUpdatedEvent, updateCartCount);
-      listener.subscription.unsubscribe();
     };
   }, []);
-
-  const accountHref = isLoggedIn ? "/account" : "/login";
-  const accountLabel = isLoggedIn ? "Minha conta" : "Entrar";
 
   return (
     <header className="border-b border-black/10">
@@ -55,31 +38,33 @@ export default function Header() {
         </button>
 
         <nav className="hidden items-center gap-6 text-[11px] uppercase tracking-[0.28em] md:flex">
-          <a href="/">Início</a>
-          <a href="/collection">Coleção</a>
-          <a href="/about">Sobre</a>
+          <Link href="/">Início</Link>
+          <Link href="/collection">Coleção</Link>
+          <Link href="/about">Sobre</Link>
         </nav>
 
-        <a
+        <Link
           href="/"
           className="absolute left-1/2 flex -translate-x-1/2 items-center gap-2 text-[11px] uppercase tracking-[0.42em]"
         >
-          <img
-            src="/images/logo-icon.png"
+          <Image
+            src="/images/logo-icon-96.png"
             alt="Logo The Lucky Club"
+            width={24}
+            height={24}
+            priority
             className="h-6 w-6 object-contain"
           />
           <span>The Lucky Club</span>
-        </a>
+        </Link>
 
         <div className="flex items-center gap-4 text-[11px] uppercase tracking-[0.28em]">
           <div className="hidden items-center gap-6 md:flex">
-            <a href="/desapegue">Desapegue</a>
-            <a href={accountHref}>{accountLabel}</a>
-            <a href="/bag">Sacola ({cartCount})</a>
+            <Link href="/desapegue">Desapegue</Link>
+            <Link href="/bag">Sacola ({cartCount})</Link>
           </div>
 
-          <a href="/bag" className="relative md:hidden" aria-label="Sacola">
+          <Link href="/bag" className="relative md:hidden" aria-label="Sacola">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -105,7 +90,7 @@ export default function Header() {
                 {cartCount}
               </span>
             )}
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -128,12 +113,11 @@ export default function Header() {
             </div>
 
             <nav className="flex flex-col gap-6 text-[14px] uppercase tracking-[0.18em] text-black/80">
-              <a href="/" onClick={() => setMobileMenuOpen(false)}>Início</a>
-              <a href="/collection" onClick={() => setMobileMenuOpen(false)}>Coleção</a>
-              <a href="/about" onClick={() => setMobileMenuOpen(false)}>Sobre</a>
-              <a href="/desapegue" onClick={() => setMobileMenuOpen(false)}>Desapegue</a>
-              <a href={accountHref} onClick={() => setMobileMenuOpen(false)}>{accountLabel}</a>
-              <a href="/bag" onClick={() => setMobileMenuOpen(false)}>Sacola</a>
+              <Link href="/" onClick={() => setMobileMenuOpen(false)}>Início</Link>
+              <Link href="/collection" onClick={() => setMobileMenuOpen(false)}>Coleção</Link>
+              <Link href="/about" onClick={() => setMobileMenuOpen(false)}>Sobre</Link>
+              <Link href="/desapegue" onClick={() => setMobileMenuOpen(false)}>Desapegue</Link>
+              <Link href="/bag" onClick={() => setMobileMenuOpen(false)}>Sacola</Link>
             </nav>
           </div>
 

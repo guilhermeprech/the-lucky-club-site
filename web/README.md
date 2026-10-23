@@ -1,128 +1,51 @@
-# 🐎 The Lucky Club
+# 🐎 The Lucky Club — versão demonstrativa
 
-> Premium second-hand fashion e-commerce with a curated luxury experience.
+> E-commerce de moda second hand premium, mantido como projeto de portfólio da G9 CODE.
 
-🌐 https://theluckyclub.com.br
+🌐 https://the-lucky-club-site.vercel.app
 
----
-
-## ✨ Overview
-
-The Lucky Club is a modern e-commerce platform focused on curated luxury and semi-luxury fashion pieces.  
-Built with a minimalist aesthetic and high-end user experience in mind, the project combines performance, clean design, and real-world deployment practices.
+**Este site é uma demonstração.** Nenhuma venda, pedido, pagamento ou mensagem real é realizado.
 
 ---
 
-## 🚀 Tech Stack
+## 🚀 Stack
 
-### Frontend
-- Next.js (App Router)
-- TypeScript
-- Tailwind CSS
-
-### Backend
-- ASP.NET Core Web API (.NET)
-- PostgreSQL
-
-### Infrastructure
-- Vercel (Frontend Hosting)
-- Railway (Backend Hosting)
-- Registro.br (Domain & DNS)
+- Next.js (App Router), TypeScript, Tailwind CSS
+- Hospedagem estática na Vercel (sem banco de dados, sem serviços pagos)
 
 ---
 
-## 🧠 Features
+## 🧠 Funcionalidades
 
-- 🛍️ Dynamic product listing from API
-- 🧾 Product detail pages
-- 👜 Shopping bag (cart)
-- 🔗 Integration with .NET backend
-- ⚡ Fast and optimized frontend (Next.js)
-- 🌍 Custom domain with SSL
-- 🔍 SEO optimized (OpenGraph + Sitemap + Metadata)
+- 🛍️ Catálogo com busca e filtro por categoria
+- 🧾 Páginas de produto com galeria de imagens
+- 👜 Sacola com quantidades, remoção e total (localStorage)
+- ✅ Checkout simulado com tela de confirmação — sem cobrança nem envio de dados
+- 🚫 Versão de portfólio não indexada (`noindex`), mas compartilhável
 
 ---
 
-## 📸 Preview
+## 🗂️ Dados
 
-Preview
-
----
-
-## 🏗️ Architecture
-
-Frontend (Next.js - Vercel)  
-↓  
-API (ASP.NET Core - Railway)  
-↓  
-Database (PostgreSQL)
+- Catálogo: `src/data/products.json` (tipos e acesso em `src/lib/products.ts`), exportado do Supabase original.
+- Imagens: `public/images/products/{id}-{n}.webp` e miniaturas `{id}-{n}-thumb.webp`.
 
 ---
 
-## ⚙️ Running Locally
+## ⚙️ Rodando localmente
 
-git clone https://github.com/guilhermeprech/the-lucky-club-site.git  
-cd the-lucky-club-site  
-npm install  
-npm run dev  
+```bash
+npm install
+npm run dev
+```
 
----
-
-## 📦 Deployment
-
-- Frontend deployed on Vercel  
-- Backend deployed on Railway  
-- Domain configured via Registro.br  
-- Automatic HTTPS enabled  
+Variável opcional: `NEXT_PUBLIC_SITE_URL` (padrão: `https://the-lucky-club-site.vercel.app`).
 
 ---
 
-## 📈 SEO & Performance
+## 👨‍💻 Autor
 
-- OpenGraph configured for social sharing  
-- Sitemap.xml implemented  
-- Google Search Console integration  
-- Optimized images and metadata  
-
----
-
-## 👨‍💻 Author
-
-Guilherme Rech  
+Guilherme Rech — G9 CODE
 
 🌐 https://guilhermerech.com.br
-💼 https://www.linkedin.com/in/guilherme-pasquali-rech-446a92355  
-📧 luckyfindsclub@gmail.com  
-
----
-
-## 📩 Contact
-
-Instagram: https://www.instagram.com/luckyfindsclub  
-Email: luckyfindsclub@gmail.com  
-
----
-
-## 🧩 Future Improvements
-
-- 🔐 Authentication (login system)  
-- 💳 Payment integration  
-- 🔎 Advanced search & filters  
-- 📊 Admin dashboard improvements  
-- 📱 Mobile UX enhancements  
-
----
-
-## ⭐ Final Notes
-
-This project was built as a real-world production application, covering:
-
-- Full-stack development  
-- Deployment & infrastructure  
-- Domain & DNS configuration  
-- SEO & indexing  
-- API integration  
-
----
-
-> Built with attention to detail, performance, and elega
+💼 https://www.linkedin.com/in/guilherme-pasquali-rech-446a92355

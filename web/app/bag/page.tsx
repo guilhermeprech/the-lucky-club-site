@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import Header from "@/app/components/Header";
 import {
@@ -9,16 +10,14 @@ import {
   removeFromCart,
   updateQuantity,
 } from "@/src/lib/cart";
+import { formatPrice } from "@/src/lib/format";
 
 export default function BagPage() {
   const [items, setItems] = useState<CartItem[]>([]);
 
-  const whatsappNumber = "5554997093265";
-
   useEffect(() => {
     const refreshCart = () => {
-      const cart = getCart();
-      setItems(cart);
+      setItems(getCart());
     };
 
     refreshCart();
@@ -36,42 +35,14 @@ export default function BagPage() {
 
   const handleRemove = (id: number) => {
     removeFromCart(id);
-    const updatedCart = getCart();
-    setItems(updatedCart);
+    setItems(getCart());
   };
 
   const handleQuantityChange = (id: number, quantity: number) => {
     if (quantity < 1) return;
 
     updateQuantity(id, quantity);
-    const updatedCart = getCart();
-    setItems(updatedCart);
-  };
-
-  const handleCheckout = () => {
-    if (items.length === 0) return;
-
-    const itemsText = items
-      .map(
-        (item) =>
-          `• ${item.brand} ${item.name} — Qtd: ${item.quantity} — ${(
-            item.price * item.quantity
-          ).toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL",
-          })}`
-      )
-      .join("%0A");
-
-    const message =
-      `Olá! Gostaria de finalizar meu pedido na The Lucky Club.%0A%0A` +
-      `Itens:%0A${itemsText}%0A%0A` +
-      `Total: ${total.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL",
-      })}`;
-
-    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+    setItems(getCart());
   };
 
   return (
@@ -94,12 +65,12 @@ export default function BagPage() {
               Sua sacola está vazia.
             </p>
 
-            <a
+            <Link
               href="/collection"
               className="mt-6 inline-block border border-black px-6 py-3 text-[10px] uppercase tracking-[0.32em] transition hover:bg-black hover:text-[#f3f1e9]"
             >
               Ver coleção
-            </a>
+            </Link>
           </div>
         ) : (
           <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
@@ -115,7 +86,6 @@ export default function BagPage() {
                         src={item.imageUrl}
                         alt={item.name}
                         fill
-                        unoptimized
                         className="object-cover"
                       />
                     ) : null}
@@ -132,33 +102,39 @@ export default function BagPage() {
                       </h2>
 
                       <p className="mt-2 text-[14px] text-black/60">
-                        {item.price.toLocaleString("pt-BR", {
-                          style: "currency",
-                          currency: "BRL",
-                        })}
+                        {formatPrice(item.price)}
                       </p>
                     </div>
 
                     <div className="mt-4 flex flex-wrap items-center gap-3 md:gap-4">
-                      {/* <button
-                        onClick={() =>
-                          handleQuantityChange(item.id, item.quantity - 1)
-                        }
-                        className="border border-black px-3 py-1"
-                      >
-                        -
-                      </button>
+                      <div className="flex items-center border border-black/10">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            handleQuantityChange(item.id, item.quantity - 1)
+                          }
+                          disabled={item.quantity <= 1}
+                          className="px-3 py-1 text-[13px] text-black/60 disabled:text-black/20"
+                          aria-label="Diminuir quantidade"
+                        >
+                          −
+                        </button>
 
-                      <span>{item.quantity}</span>
+                        <span className="min-w-[24px] text-center text-[13px]">
+                          {item.quantity}
+                        </span>
 
-                      <button
-                        onClick={() =>
-                          handleQuantityChange(item.id, item.quantity + 1)
-                        }
-                        className="border border-black px-3 py-1"
-                      >
-                        +
-                      </button> */}
+                        <button
+                          type="button"
+                          onClick={() =>
+                            handleQuantityChange(item.id, item.quantity + 1)
+                          }
+                          className="px-3 py-1 text-[13px] text-black/60"
+                          aria-label="Aumentar quantidade"
+                        >
+                          +
+                        </button>
+                      </div>
 
                       <button
                         onClick={() => handleRemove(item.id)}
@@ -180,26 +156,23 @@ export default function BagPage() {
               <div className="mt-6 flex items-center justify-between text-[15px]">
                 <span>Total</span>
                 <span>
-                  {total.toLocaleString("pt-BR", {
-                    style: "currency",
-                    currency: "BRL",
-                  })}
+                  {formatPrice(total)}
                 </span>
               </div>
 
-              <button
-                onClick={handleCheckout}
-                className="mt-8 w-full border border-black px-6 py-4 text-[10px] uppercase tracking-[0.32em] transition hover:bg-black hover:text-[#f3f1e9]"
+              <Link
+                href="/checkout"
+                className="mt-8 block w-full border border-black px-6 py-4 text-center text-[10px] uppercase tracking-[0.32em] transition hover:bg-black hover:text-[#f3f1e9]"
               >
                 Finalizar pedido
-              </button>
+              </Link>
 
-              <a
+              <Link
                 href="/collection"
                 className="mt-4 inline-block text-[10px] uppercase tracking-[0.28em] text-black/55"
               >
                 Continuar comprando
-              </a>
+              </Link>
             </div>
           </div>
         )}

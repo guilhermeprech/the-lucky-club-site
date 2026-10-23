@@ -1,19 +1,9 @@
 import Link from "next/link";
 import Header from "@/app/components/Header";
+import { formatPrice } from "@/src/lib/format";
+import { getProductById, getProducts } from "@/src/lib/products";
 import AddToBagButton from "./AddToBagButton";
 import ProductGallery from "./ProductGallery";
-import { supabase } from "@/src/lib/supabase";
-
-type Product = {
-  id: number;
-  name: string;
-  brand: string;
-  description: string;
-  price: number;
-  condition: string;
-  imageUrl?: string;
-  images: string[];
-};
 
 type PageProps = {
   params: Promise<{
@@ -21,39 +11,13 @@ type PageProps = {
   }>;
 };
 
-async function getProduct(id: string): Promise<Product | null> {
-  const { data, error } = await supabase
-    .from("Products")
-    .select("Id, Name, Brand, Description, Price, Condition, ImageUrl, Images")
-    .eq("Id", Number(id))
-    .single();
-
-  if (error || !data) {
-    return null;
-  }
-
-  const images = Array.from(
-    new Set([
-      ...(data.ImageUrl ? [data.ImageUrl] : []),
-      ...(Array.isArray(data.Images) ? data.Images : []),
-    ])
-  );
-
-  return {
-    id: data.Id,
-    name: data.Name ?? "",
-    brand: data.Brand ?? "",
-    description: data.Description ?? "",
-    price: Number(data.Price ?? 0),
-    condition: data.Condition ?? "",
-    imageUrl: data.ImageUrl ?? "",
-    images,
-  };
+export function generateStaticParams() {
+  return getProducts().map((product) => ({ id: String(product.id) }));
 }
 
 export default async function ProductDetailPage({ params }: PageProps) {
   const { id } = await params;
-  const product = await getProduct(id);
+  const product = getProductById(Number(id));
 
   if (!product) {
     return (
@@ -92,10 +56,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
           </h1>
 
           <p className="mt-3 text-xl text-black/80 md:mt-5 md:text-[28px]">
-            {product.price.toLocaleString("pt-BR", {
-              style: "currency",
-              currency: "BRL",
-            })}
+            {formatPrice(product.price)}
           </p>
 
           <p className="mt-5 text-[12px] uppercase tracking-[0.25em] text-black/45 md:mt-6">

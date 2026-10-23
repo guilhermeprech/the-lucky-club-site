@@ -3,17 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
-
-type Product = {
-  id: number;
-  name: string;
-  brand: string;
-  description: string;
-  price: number;
-  condition: string;
-  imageUrl?: string;
-  category?: string;
-};
+import { formatPrice } from "@/src/lib/format";
+import type { Product } from "@/src/lib/products";
 
 export default function CollectionClient({
   products,
@@ -97,9 +88,9 @@ export default function CollectionClient({
               className="block"
             >
               <div className="relative aspect-[3/4] overflow-hidden bg-[#e8e3d8]">
-                {product.imageUrl ? (
+                {product.thumbnailUrl ? (
                   <Image
-                    src={product.imageUrl}
+                    src={product.thumbnailUrl}
                     alt={product.name}
                     fill
                     sizes="(max-width: 768px) 50vw, 25vw"
@@ -116,10 +107,7 @@ export default function CollectionClient({
                 <h3 className="mt-2 text-[15px]">{product.name}</h3>
 
                 <p className="mt-2 text-[13px] text-black/56">
-                  {product.price.toLocaleString("pt-BR", {
-                    style: "currency",
-                    currency: "BRL",
-                  })}
+                  {formatPrice(product.price)}
                 </p>
 
                 <p className="mt-2 text-[12px] text-black/45">

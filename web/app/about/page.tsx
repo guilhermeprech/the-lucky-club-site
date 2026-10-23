@@ -1,7 +1,6 @@
-"use client";
-
-import Header from "@/app/components/Header";
+import Image from "next/image";
 import Footer from "@/app/components/Footer";
+import Header from "@/app/components/Header";
 
 export default function AboutPage() {
   return (
@@ -11,11 +10,14 @@ export default function AboutPage() {
       <section className="border-b border-black/10 py-10 md:py-20">
         <div className="container-editorial grid items-center gap-12 md:grid-cols-2">
           <div className="order-1">
-            <div className="aspect-[4/5] w-full overflow-hidden bg-[#e8e3d8]">
-              <img
-                src="/images/about.jpg"
+            <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#e8e3d8]">
+              <Image
+                src="/images/about.webp"
                 alt="Sobre The Lucky Club"
-                className="h-full w-full object-cover"
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
               />
             </div>
           </div>
