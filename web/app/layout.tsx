@@ -1,35 +1,42 @@
-import localFont from "next/font/local";
-import "./globals.css";
 import type { Metadata } from "next";
-import MetaPixel from "./components/MetaPixel";
+import localFont from "next/font/local";
+import DemoNotice from "./components/DemoNotice";
+import "./globals.css";
+
+const description =
+  "Second hand premium fashion — projeto demonstrativo de e-commerce desenvolvido pela G9 CODE.";
 
 export const metadata: Metadata = {
   title: "The Lucky Club",
-  description: "Second hand premium fashion",
-  metadataBase: new URL("https://theluckyclub.com.br"),
+  description,
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://the-lucky-club-site.vercel.app"
+  ),
 
-  verification: {
-    google: "c8YmN8aFY_j-3wFfcRgEjrCayBiJfkuY0g8NCC2sM0s",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
   },
 
   openGraph: {
     title: "The Lucky Club",
-    description: "Second hand premium fashion",
-    url: "https://theluckyclub.com.br",
+    description:
+      "Second hand premium fashion — projeto demonstrativo de e-commerce desenvolvido pela G9 CODE.",
+    url: "/",
     siteName: "The Lucky Club",
     images: [
       {
-        url: "https://theluckyclub.com.br/og-image.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
       },
     ],
     locale: "pt_BR",
     type: "website",
-  },
-
-  icons: {
-    icon: "/icon.png",
   },
 };
 
@@ -72,7 +79,7 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${perandory.variable} ${vintageGoods.variable}`}
       >
-      <MetaPixel />
+        <DemoNotice />
         {children}
       </body>
     </html>

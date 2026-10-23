@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 export default function ProductGallery({
@@ -23,11 +24,14 @@ export default function ProductGallery({
 
   if (validImages.length === 1) {
     return (
-      <div className="h-[280px] overflow-hidden bg-[#e8e3d8] md:h-[620px]">
-        <img
+      <div className="relative h-[280px] overflow-hidden bg-[#e8e3d8] md:h-[620px]">
+        <Image
           src={validImages[0]}
           alt={productName}
-          className="h-full w-full object-cover"
+          fill
+          priority
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover"
         />
       </div>
     );
@@ -41,24 +45,29 @@ export default function ProductGallery({
             key={`${image}-${index}`}
             type="button"
             onClick={() => setSelectedImage(image)}
-            className={`h-20 w-16 shrink-0 overflow-hidden border bg-[#e8e3d8] md:h-28 md:w-full ${
+            className={`relative h-20 w-16 shrink-0 overflow-hidden border bg-[#e8e3d8] md:h-28 md:w-full ${
               selectedImage === image ? "border-black" : "border-black/10"
             }`}
           >
-            <img
+            <Image
               src={image}
               alt={`${productName} imagem ${index + 1}`}
-              className="h-full w-full object-cover"
+              fill
+              sizes="82px"
+              className="object-cover"
             />
           </button>
         ))}
       </div>
 
-      <div className="order-1 h-[280px] overflow-hidden bg-[#e8e3d8] md:order-2 md:h-[620px]">
-        <img
+      <div className="relative order-1 h-[280px] overflow-hidden bg-[#e8e3d8] md:order-2 md:h-[620px]">
+        <Image
           src={selectedImage}
           alt={productName}
-          className="h-full w-full object-cover"
+          fill
+          priority
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover"
         />
       </div>
     </div>

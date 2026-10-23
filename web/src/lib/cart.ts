@@ -14,7 +14,11 @@ export function getCart(): CartItem[] {
   if (typeof window === "undefined") return [];
 
   const cart = localStorage.getItem(CART_KEY);
-  return cart ? JSON.parse(cart) : [];
+  const items: CartItem[] = cart ? JSON.parse(cart) : [];
+
+  return items.map((item) =>
+    item.imageUrl.startsWith("/") ? item : { ...item, imageUrl: "" }
+  );
 }
 
 export function saveCart(cart: CartItem[]) {
@@ -45,6 +49,10 @@ export function updateQuantity(id: number, quantity: number) {
     item.id === id ? { ...item, quantity } : item
   );
   saveCart(cart);
+}
+
+export function clearCart() {
+  saveCart([]);
 }
 
 export function getCartCount() {

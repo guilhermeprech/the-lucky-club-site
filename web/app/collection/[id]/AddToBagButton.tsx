@@ -2,16 +2,13 @@
 
 import { useState } from "react";
 import { addToCart } from "@/src/lib/cart";
+import type { Product } from "@/src/lib/products";
 
-type Product = {
-  id: number;
-  name: string;
-  brand: string;
-  price: number;
-  imageUrl?: string;
+type AddToBagButtonProps = {
+  product: Pick<Product, "id" | "name" | "brand" | "price" | "thumbnailUrl">;
 };
 
-export default function AddToBagButton({ product }: { product: Product }) {
+export default function AddToBagButton({ product }: AddToBagButtonProps) {
   const [showToast, setShowToast] = useState(false);
 
   const handleAddToBag = () => {
@@ -20,7 +17,7 @@ export default function AddToBagButton({ product }: { product: Product }) {
       name: product.name,
       brand: product.brand,
       price: product.price,
-      imageUrl: product.imageUrl || "",
+      imageUrl: product.thumbnailUrl,
     });
 
     setShowToast(true);
@@ -38,7 +35,6 @@ export default function AddToBagButton({ product }: { product: Product }) {
       >
         Adicionar à sacola
       </button>
-      
 
       {showToast && (
         <div className="fixed bottom-6 right-6 z-50 border border-black/10 bg-[var(--background)] px-5 py-4 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">

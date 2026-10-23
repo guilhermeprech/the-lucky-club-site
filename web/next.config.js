@@ -1,24 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [
+    unoptimized: true,
+  },
+
+  async headers() {
+    return [
       {
-        protocol: "https",
-        hostname: "images.unsplash.com",
+        source: "/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
-      {
-        protocol: "https",
-        hostname: "i.imgur.com",
-      },
-      {
-        protocol: "https",
-        hostname: "cdn.shopify.com",
-      },
-      {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-      },
-    ],
+    ];
+  },
+
+  async redirects() {
+    return ["/admin", "/login", "/account"].flatMap((route) => [
+      { source: route, destination: "/", permanent: false },
+      { source: `${route}/:path*`, destination: "/", permanent: false },
+    ]);
   },
 };
 

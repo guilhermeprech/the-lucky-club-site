@@ -1,1 +1,18 @@
+# dependências e builds
 node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+
+# ambiente e segredos
+.env*
+!.env.example
+
+# Vercel
+.vercel
+
+# arquivos locais do sistema, editores e do Claude
+.DS_Store
+.claude/
+*.log

@@ -1,74 +1,12 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
 import Footer from "@/app/components/Footer";
 import Header from "@/app/components/Header";
-import { supabase } from "@/src/lib/supabase";
-
-type Product = {
-  id: number;
-  name: string;
-  brand: string;
-  description: string;
-  price: number;
-  condition: string;
-  createdAt: string;
-  imageUrl?: string;
-};
+import { formatPrice } from "@/src/lib/format";
+import { getLatestProducts } from "@/src/lib/products";
 
 export default function Home() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const { data, error } = await supabase
-          .from("Products")
-          .select(
-            'Id, Name, Brand, Description, Price, Condition, ImageUrl, CreatedAt'
-          )
-          .order("CreatedAt", { ascending: false });
-
-        if (error) {
-          throw error;
-        }
-
-        const formattedProducts: Product[] = (data ?? []).map((product) => ({
-          id: product.Id,
-          name: product.Name ?? "",
-          brand: product.Brand ?? "",
-          description: product.Description ?? "",
-          price: Number(product.Price ?? 0),
-          condition: product.Condition ?? "",
-          imageUrl: product.ImageUrl ?? "",
-          createdAt: product.CreatedAt ?? "",
-        }));
-
-        setProducts(formattedProducts);
-        setHasError(false);
-      } catch (error) {
-        console.error("Erro ao buscar produtos:", error);
-        setHasError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
-  const featuredProducts = useMemo(() => {
-    return [...products]
-      .sort(
-        (a, b) =>
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-      )
-      .slice(0, 4);
-  }, [products]);
+  const featuredProducts = getLatestProducts(4);
 
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
@@ -79,7 +17,7 @@ export default function Home() {
           <Link href="/collection" prefetch className="mx-auto block max-w-[1050px]">
             <div className="relative aspect-[9/14] w-full overflow-hidden bg-[#d8d2c8] md:hidden">
               <Image
-                src="/images/hero-mobile1.jpg"
+                src="/images/hero-mobile1.webp"
                 alt="Imagem principal The Lucky Club"
                 fill
                 priority
@@ -91,7 +29,7 @@ export default function Home() {
 
             <div className="relative hidden aspect-[24/15] w-full overflow-hidden bg-[#d8d2c8] md:block">
               <Image
-                src="/images/hero-desk.jpg"
+                src="/images/hero-desk.webp"
                 alt="Imagem principal The Lucky Club"
                 fill
                 priority
@@ -125,13 +63,7 @@ export default function Home() {
             </Link>
           </div>
 
-          {loading ? (
-            <p className="text-[14px] text-black/60">Carregando peças...</p>
-          ) : hasError ? (
-            <p className="text-[14px] text-black/60">
-              Não foi possível carregar as peças agora. Atualize a página em alguns segundos.
-            </p>
-          ) : featuredProducts.length === 0 ? (
+          {featuredProducts.length === 0 ? (
             <p className="text-[14px] text-black/60">
               Ainda não há peças cadastradas.
             </p>
@@ -147,9 +79,9 @@ export default function Home() {
                   >
                     <article>
                       <div className="relative aspect-[3/4] overflow-hidden bg-[#e8e3d8]">
-                        {product.imageUrl ? (
+                        {product.thumbnailUrl ? (
                           <Image
-                            src={product.imageUrl}
+                            src={product.thumbnailUrl}
                             alt={product.name}
                             fill
                             priority={index === 0}
@@ -167,10 +99,7 @@ export default function Home() {
                         <h3 className="mt-2 text-[14px]">{product.name}</h3>
 
                         <p className="mt-2 text-[13px] text-black/56">
-                          {product.price.toLocaleString("pt-BR", {
-                            style: "currency",
-                            currency: "BRL",
-                          })}
+                          {formatPrice(product.price)}
                         </p>
                       </div>
                     </article>

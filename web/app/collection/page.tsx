@@ -1,59 +1,9 @@
 import Header from "@/app/components/Header";
+import { getProducts } from "@/src/lib/products";
 import CollectionClient from "./CollectionClient";
-import { supabase } from "@/src/lib/supabase";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
-
-type Product = {
-  id: number;
-  name: string;
-  brand: string;
-  description: string;
-  price: number;
-  condition: string;
-  imageUrl?: string;
-  images: string[];
-  category?: string;
-};
-
-async function getProducts(): Promise<Product[]> {
-  const { data, error } = await supabase
-    .from("Products")
-    .select(
-      "Id, Name, Brand, Description, Price, Condition, ImageUrl, Images, Category, CreatedAt"
-    )
-    .order("CreatedAt", { ascending: false });
-
-  if (error) {
-    console.error("Erro ao buscar produtos:", error.message);
-    return [];
-  }
-
-  return (data ?? []).map((product) => {
-    const images =
-      Array.isArray(product.Images) && product.Images.length > 0
-        ? product.Images
-        : product.ImageUrl
-        ? [product.ImageUrl]
-        : [];
-
-    return {
-      id: Number(product.Id),
-      name: product.Name ?? "",
-      brand: product.Brand ?? "",
-      description: product.Description ?? "",
-      price: Number(product.Price ?? 0),
-      condition: product.Condition ?? "",
-      imageUrl: images[0] ?? "",
-      images,
-      category: product.Category ?? "",
-    };
-  });
-}
-
-export default async function CollectionPage() {
-  const products = await getProducts();
+export default function CollectionPage() {
+  const products = getProducts();
 
   return (
     <main className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
