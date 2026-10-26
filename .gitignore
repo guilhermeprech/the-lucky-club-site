@@ -16,3 +16,13 @@ build/
 .DS_Store
 .claude/
 *.log
+
+# local credentials and private key material
+*.pem
+*.key
+*.p12
+*.pfx
+
+# local tooling and test output
+.codex/
+coverage/
